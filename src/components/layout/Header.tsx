@@ -8,6 +8,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -17,6 +18,16 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      setIsMobileServicesOpen(false)
+    }
+  }, [isMobileMenuOpen])
+
+  const handleMobileNavSelection = () => {
+    setIsMobileMenuOpen(false)
+  }
 
   const services = [
     { name: 'Structured Cabling', slug: 'structured-cabling', icon: '🔌' },
@@ -185,52 +196,96 @@ export default function Header() {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="lg:hidden mt-4 pb-4 animate-slide-up">
-            <nav className="flex flex-col gap-2">
-              <Link href="/" className="p-3 rounded-lg hover:bg-gray-100 font-medium text-gray-900">
-                Home
-              </Link>
-
-              <div className="border-t border-gray-200 my-2" />
-
-              <div className="px-3 text-sm font-semibold text-gray-500 mb-1">Services</div>
-              {services.map((service) => (
+            <div className="max-h-[70vh] overflow-y-auto pr-1">
+              <nav className="flex flex-col gap-2">
                 <Link
-                  key={service.slug}
-                  href={`/services/${service.slug}`}
-                  className="p-3 pl-6 rounded-lg hover:bg-gray-100 text-gray-700 flex items-center gap-2"
+                  href="/"
+                  className="p-3 rounded-lg hover:bg-gray-100 font-medium text-gray-900"
+                  onClick={handleMobileNavSelection}
                 >
-                  <span>{service.icon}</span>
-                  <span>{service.name}</span>
+                  Home
                 </Link>
-              ))}
 
-              <div className="border-t border-gray-200 my-2" />
+                <div className="border-t border-gray-200 my-2" />
 
-              <Link href="/portfolio" className="p-3 rounded-lg hover:bg-gray-100 font-medium text-gray-900">
-                Portfolio
-              </Link>
+                <button
+                  type="button"
+                  onClick={() => setIsMobileServicesOpen((prev) => !prev)}
+                  className="flex w-full items-center justify-between p-3 rounded-lg hover:bg-gray-100 font-medium text-gray-900"
+                  aria-expanded={isMobileServicesOpen}
+                >
+                  <span>Services</span>
+                  <svg
+                    className={`w-5 h-5 transition-transform ${isMobileServicesOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
 
-              <Link href="/about" className="p-3 rounded-lg hover:bg-gray-100 font-medium text-gray-900">
-                About
-              </Link>
+                {isMobileServicesOpen && (
+                  <div className="flex flex-col gap-1">
+                    {services.map((service) => (
+                      <Link
+                        key={service.slug}
+                        href={`/services/${service.slug}`}
+                        className="p-3 pl-6 rounded-lg hover:bg-gray-100 text-gray-700 flex items-center gap-2"
+                        onClick={handleMobileNavSelection}
+                      >
+                        <span>{service.icon}</span>
+                        <span>{service.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
 
-              <Link href="/contact" className="p-3 rounded-lg hover:bg-gray-100 font-medium text-gray-900">
-                Contact
-              </Link>
+                <div className="border-t border-gray-200 my-2" />
 
-              <div className="border-t border-gray-200 my-2" />
+                <Link
+                  href="/portfolio"
+                  className="p-3 rounded-lg hover:bg-gray-100 font-medium text-gray-900"
+                  onClick={handleMobileNavSelection}
+                >
+                  Portfolio
+                </Link>
 
-              <a
-                href="tel:+12145551234"
-                className="p-3 rounded-lg bg-primary-50 text-primary-700 font-semibold text-center"
-              >
-                📞 Call (214) 555-1234
-              </a>
+                <Link
+                  href="/about"
+                  className="p-3 rounded-lg hover:bg-gray-100 font-medium text-gray-900"
+                  onClick={handleMobileNavSelection}
+                >
+                  About
+                </Link>
 
-              <Link href="/contact" className="btn btn-primary btn-md w-full">
-                Get Free Quote
-              </Link>
-            </nav>
+                <Link
+                  href="/contact"
+                  className="p-3 rounded-lg hover:bg-gray-100 font-medium text-gray-900"
+                  onClick={handleMobileNavSelection}
+                >
+                  Contact
+                </Link>
+
+                <div className="border-t border-gray-200 my-2" />
+
+                <a
+                  href="tel:+12145551234"
+                  className="p-3 rounded-lg bg-primary-50 text-primary-700 font-semibold text-center"
+                  onClick={handleMobileNavSelection}
+                >
+                  📞 Call (214) 555-1234
+                </a>
+
+                <Link
+                  href="/contact"
+                  className="btn btn-primary btn-md w-full"
+                  onClick={handleMobileNavSelection}
+                >
+                  Get Free Quote
+                </Link>
+              </nav>
+            </div>
           </div>
         )}
       </div>

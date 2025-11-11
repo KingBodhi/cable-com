@@ -203,17 +203,17 @@ export default function AboutPage() {
               {
                 title: '24/7 Emergency Service',
                 description:
-                  'Network failures don't wait for business hours. Neither do we. Emergency service available around the clock.',
+                  "Network failures don't wait for business hours. Neither do we. Emergency service available around the clock.",
               },
               {
                 title: 'Future-Proof Design',
                 description:
-                  'We design infrastructure that supports not just today's needs but tomorrow's technologies and growth.',
+                  "We design infrastructure that supports not just today's needs but tomorrow's technologies and growth.",
               },
               {
                 title: 'White-Glove Service',
                 description:
-                  'From initial consultation to post-installation support, you'll work with experienced professionals who care.',
+                  "From initial consultation to post-installation support, you'll work with experienced professionals who care.",
               },
             ].map((item, index) => (
               <div key={index} className="flex gap-4">

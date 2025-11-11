@@ -5,9 +5,429 @@ import Link from 'next/link'
 import { services } from '@/data/services'
 import { getFeaturedCaseStudies } from '@/data/case-studies'
 
+type AssessmentFormData = {
+  projectType: string
+  facilityType: string
+  dropCount: string
+  timeline: string
+  priorities: string[]
+  compliance: string
+  notes: string
+  contactName: string
+  company: string
+  contactEmail: string
+  contactPhone: string
+}
+
+const assessmentSteps = [
+  {
+    title: 'What type of project?',
+    helper: 'Select the option that best describes your initiative.',
+  },
+  {
+    title: 'Tell us about your facility',
+    helper: 'Share a few quick details so we can scope the work.',
+  },
+  {
+    title: 'What matters most?',
+    helper: 'Highlight the priorities and standards we should plan for.',
+  },
+  {
+    title: 'How can we reach you?',
+    helper: "We'll send your tailored assessment within one business day.",
+  },
+  {
+    title: 'Review & confirm',
+    helper: 'Make sure everything looks right before submitting.',
+  },
+]
+
+const projectTypeOptions = [
+  { icon: '🏗️', label: 'New Installation', description: 'Full build-out for a new space or campus.' },
+  { icon: '⬆️', label: 'Upgrade', description: 'Replace legacy cabling with higher performance.' },
+  { icon: '➕', label: 'Expansion', description: 'Add capacity to meet growth demands.' },
+  { icon: '🔧', label: 'Repair', description: 'Diagnose and fix performance issues.' },
+]
+
+const facilityTypes = [
+  'Corporate HQ',
+  'Data Center',
+  'Industrial/Warehouse',
+  'Healthcare',
+  'Education Campus',
+  'Government Facility',
+  'Retail / Hospitality',
+  'Other',
+]
+
+const timelineOptions = ['Immediately', '0-30 Days', '30-60 Days', '60-90 Days', 'Planning Phase']
+
+const priorityOptions = [
+  { label: '24/7 Uptime', description: 'Redundant pathways, zero downtime scheduling.' },
+  { label: 'Speed & Bandwidth', description: '10/40/100G performance with headroom.' },
+  { label: 'Security & Compliance', description: 'Meets DoD STIG, HIPAA, PCI, or FAA standards.' },
+  { label: 'Budget Control', description: 'Value-engineered with transparent pricing.' },
+  { label: 'Future-Proofing', description: 'Ready for Wi-Fi 7, PoE++, and IoT growth.' },
+  { label: 'Rapid Deployment', description: 'Accelerated timelines and night work.' },
+]
+
+const complianceOptions = ['None / Not Sure', 'HIPAA', 'DoD / FedRAMP', 'FAA', 'PCI', 'Other']
+
+const initialAssessmentData: AssessmentFormData = {
+  projectType: '',
+  facilityType: '',
+  dropCount: '',
+  timeline: '',
+  priorities: [],
+  compliance: '',
+  notes: '',
+  contactName: '',
+  company: '',
+  contactEmail: '',
+  contactPhone: '',
+}
+
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState(0)
+  const [assessmentStep, setAssessmentStep] = useState(0)
+  const [assessmentData, setAssessmentData] = useState<AssessmentFormData>(initialAssessmentData)
+  const [assessmentStatus, setAssessmentStatus] = useState<'idle' | 'submitting' | 'success'>('idle')
+  const [formError, setFormError] = useState<string | null>(null)
   const featuredProjects = getFeaturedCaseStudies()
+  const totalAssessmentSteps = assessmentSteps.length
+  const progressPercent = Math.round(((assessmentStep + 1) / totalAssessmentSteps) * 100)
+  const currentStepMeta = assessmentSteps[assessmentStep]
+
+  const updateField = (field: keyof AssessmentFormData, value: string) => {
+    setAssessmentData((prev) => ({ ...prev, [field]: value }))
+    if (formError) setFormError(null)
+  }
+
+  const togglePriority = (priority: string) => {
+    setAssessmentData((prev) => {
+      const isSelected = prev.priorities.includes(priority)
+      const priorities = isSelected ? prev.priorities.filter((item) => item !== priority) : [...prev.priorities, priority]
+      return { ...prev, priorities }
+    })
+    if (formError) setFormError(null)
+  }
+
+  const isStepComplete = (stepIndex: number) => {
+    switch (stepIndex) {
+      case 0:
+        return Boolean(assessmentData.projectType)
+      case 1:
+        return Boolean(assessmentData.facilityType && assessmentData.dropCount && Number(assessmentData.dropCount) > 0 && assessmentData.timeline)
+      case 2:
+        return assessmentData.priorities.length > 0 && Boolean(assessmentData.compliance)
+      case 3:
+        return Boolean(
+          assessmentData.contactName &&
+            assessmentData.company &&
+            assessmentData.contactEmail &&
+            assessmentData.contactPhone
+        )
+      case 4:
+        return true
+      default:
+        return false
+    }
+  }
+
+  const handleBack = () => {
+    if (assessmentStep === 0 || assessmentStatus === 'submitting') return
+    setAssessmentStep((prev) => Math.max(prev - 1, 0))
+    setFormError(null)
+  }
+
+  const simulateSubmit = () => new Promise((resolve) => setTimeout(resolve, 1200))
+
+  const handleSubmit = async () => {
+    setAssessmentStatus('submitting')
+    setFormError(null)
+    try {
+      await simulateSubmit()
+      setAssessmentStatus('success')
+    } catch (error) {
+      console.error('Assessment submission failed', error)
+      setAssessmentStatus('idle')
+      setFormError('Something went wrong. Please try again or call (214) 555-1234.')
+    }
+  }
+
+  const handleNext = async () => {
+    if (!isStepComplete(assessmentStep)) {
+      setFormError('Please complete the required fields to continue.')
+      return
+    }
+
+    if (assessmentStep === totalAssessmentSteps - 1) {
+      await handleSubmit()
+      return
+    }
+
+    setAssessmentStep((prev) => Math.min(prev + 1, totalAssessmentSteps - 1))
+    setFormError(null)
+  }
+
+  const handleRestart = () => {
+    setAssessmentData(initialAssessmentData)
+    setAssessmentStep(0)
+    setAssessmentStatus('idle')
+    setFormError(null)
+  }
+
+  const renderStepContent = () => {
+    switch (assessmentStep) {
+      case 0:
+        return (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {projectTypeOptions.map((option) => {
+              const isActive = assessmentData.projectType === option.label
+              return (
+                <button
+                  key={option.label}
+                  type="button"
+                  onClick={() => updateField('projectType', option.label)}
+                  className={`p-5 text-left border-2 rounded-xl transition-all focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+                    isActive ? 'border-primary-500 bg-primary-50 shadow-md' : 'border-gray-200 hover:border-primary-300'
+                  }`}
+                >
+                  <div className="text-3xl mb-3">{option.icon}</div>
+                  <div className="font-semibold mb-1">{option.label}</div>
+                  <p className="text-sm text-gray-500">{option.description}</p>
+                </button>
+              )
+            })}
+          </div>
+        )
+      case 1:
+        return (
+          <div className="space-y-5">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Facility Type</label>
+              <select
+                className="input-field"
+                value={assessmentData.facilityType}
+                onChange={(event) => updateField('facilityType', event.target.value)}
+              >
+                <option value="">Select a facility</option>
+                {facilityTypes.map((type) => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="grid md:grid-cols-2 gap-5">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Approx. number of cable drops</label>
+                <input
+                  type="number"
+                  min="1"
+                  className="input-field"
+                  value={assessmentData.dropCount}
+                  onChange={(event) => updateField('dropCount', event.target.value)}
+                  placeholder="e.g. 75"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Ideal go-live timeline</label>
+                <select
+                  className="input-field"
+                  value={assessmentData.timeline}
+                  onChange={(event) => updateField('timeline', event.target.value)}
+                >
+                  <option value="">Select timeline</option>
+                  {timelineOptions.map((timeline) => (
+                    <option key={timeline} value={timeline}>
+                      {timeline}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+        )
+      case 2:
+        return (
+          <div className="space-y-6">
+            <div>
+              <p className="text-sm font-semibold text-gray-700 mb-3">Top priorities (choose at least one)</p>
+              <div className="grid md:grid-cols-2 gap-3">
+                {priorityOptions.map((priority) => {
+                  const isActive = assessmentData.priorities.includes(priority.label)
+                  return (
+                    <button
+                      key={priority.label}
+                      type="button"
+                      onClick={() => togglePriority(priority.label)}
+                      className={`p-4 border-2 rounded-xl text-left transition-all focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+                        isActive ? 'border-primary-500 bg-primary-50 shadow-sm' : 'border-gray-200 hover:border-primary-200'
+                      }`}
+                    >
+                      <div className="font-semibold mb-1">{priority.label}</div>
+                      <p className="text-sm text-gray-500">{priority.description}</p>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Compliance requirements</label>
+                <select
+                  className="input-field"
+                  value={assessmentData.compliance}
+                  onChange={(event) => updateField('compliance', event.target.value)}
+                >
+                  <option value="">Select requirement</option>
+                  {complianceOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Anything else we should know?</label>
+                <textarea
+                  className="input-field"
+                  rows={3}
+                  value={assessmentData.notes}
+                  onChange={(event) => updateField('notes', event.target.value)}
+                  placeholder="Night work needed, ceiling height limits, hot aisle containment, etc."
+                />
+              </div>
+            </div>
+          </div>
+        )
+      case 3:
+        return (
+          <div className="grid md:grid-cols-2 gap-5">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+              <input
+                type="text"
+                className="input-field"
+                value={assessmentData.contactName}
+                onChange={(event) => updateField('contactName', event.target.value)}
+                placeholder="Jane Smith"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Company</label>
+              <input
+                type="text"
+                className="input-field"
+                value={assessmentData.company}
+                onChange={(event) => updateField('company', event.target.value)}
+                placeholder="Acme Logistics"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Work Email</label>
+              <input
+                type="email"
+                className="input-field"
+                value={assessmentData.contactEmail}
+                onChange={(event) => updateField('contactEmail', event.target.value)}
+                placeholder="jane@acme.com"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Mobile or Direct Line</label>
+              <input
+                type="tel"
+                className="input-field"
+                value={assessmentData.contactPhone}
+                onChange={(event) => updateField('contactPhone', event.target.value)}
+                placeholder="(555) 123-4567"
+              />
+            </div>
+          </div>
+        )
+      case 4:
+        const summarySections = [
+          {
+            title: 'Project Scope',
+            step: 0,
+            items: [
+              { label: 'Type', value: assessmentData.projectType || 'Not provided' },
+              { label: 'Timeline', value: assessmentData.timeline || 'Not provided' },
+            ],
+          },
+          {
+            title: 'Facility Details',
+            step: 1,
+            items: [
+              { label: 'Facility', value: assessmentData.facilityType || 'Not provided' },
+              { label: 'Cable Drops', value: assessmentData.dropCount || 'Not provided' },
+            ],
+          },
+          {
+            title: 'Priorities',
+            step: 2,
+            items: [
+              {
+                label: 'Focus Areas',
+                value: assessmentData.priorities.length ? assessmentData.priorities.join(', ') : 'Not provided',
+              },
+              { label: 'Compliance', value: assessmentData.compliance || 'Not provided' },
+              { label: 'Notes', value: assessmentData.notes || '—' },
+            ],
+          },
+          {
+            title: 'Point of Contact',
+            step: 3,
+            items: [
+              { label: 'Name', value: assessmentData.contactName || 'Not provided' },
+              { label: 'Company', value: assessmentData.company || 'Not provided' },
+              { label: 'Email', value: assessmentData.contactEmail || 'Not provided' },
+              { label: 'Phone', value: assessmentData.contactPhone || 'Not provided' },
+            ],
+          },
+        ]
+
+        return (
+          <div className="space-y-4">
+            {summarySections.map((section) => (
+              <div key={section.title} className="border border-gray-200 rounded-xl p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <div>
+                    <p className="text-sm uppercase tracking-wide text-gray-500">{section.title}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setAssessmentStep(section.step)
+                      setAssessmentStatus('idle')
+                    }}
+                    className="text-sm font-semibold text-primary-600 hover:underline"
+                  >
+                    Edit
+                  </button>
+                </div>
+                <dl className="grid sm:grid-cols-2 gap-3 text-sm text-gray-700">
+                  {section.items.map((item) => (
+                    <div key={item.label}>
+                      <dt className="font-semibold">{item.label}</dt>
+                      <dd>{item.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
+            <p className="text-sm text-gray-500">
+              Need to make a change? Use the edit buttons above before you submit. Our team reviews every assessment and
+              sends next steps within one business day.
+            </p>
+          </div>
+        )
+      default:
+        return null
+    }
+  }
 
   return (
     <main className="overflow-x-hidden">
@@ -403,48 +823,103 @@ export default function HomePage() {
             </div>
 
             <div className="card shadow-2xl">
-              <div className="mb-6">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-semibold">STEP 1 of 5: What type of project?</h3>
-                  <span className="text-sm text-gray-500">20% Complete</span>
+              {assessmentStatus === 'success' ? (
+                <div className="text-center space-y-6">
+                  <div className="w-16 h-16 rounded-full bg-success/10 text-success mx-auto flex items-center justify-center text-3xl">
+                    ✓
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-bold mb-2">Assessment Request Received</h3>
+                    <p className="text-gray-600 max-w-2xl mx-auto">
+                      Thanks {assessmentData.contactName || 'there'}! A Cable-Com engineer will review your details and send a
+                      tailored scope with pricing to {assessmentData.contactEmail || 'your inbox'} within one business day.
+                    </p>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-4 text-left">
+                    <div className="bg-gray-50 rounded-xl p-4">
+                      <p className="text-xs uppercase tracking-wide text-gray-500 mb-2">Project Snapshot</p>
+                      <p className="font-semibold text-gray-900">{assessmentData.projectType || 'Project Type TBD'}</p>
+                      <p className="text-sm text-gray-600">Timeline: {assessmentData.timeline || 'Not set'}</p>
+                      <p className="text-sm text-gray-600">Facility: {assessmentData.facilityType || 'Not set'}</p>
+                    </div>
+                    <div className="bg-gray-50 rounded-xl p-4">
+                      <p className="text-xs uppercase tracking-wide text-gray-500 mb-2">Primary Contact</p>
+                      <p className="font-semibold text-gray-900">{assessmentData.contactName || '—'}</p>
+                      <p className="text-sm text-gray-600">{assessmentData.company || 'Company TBD'}</p>
+                      <p className="text-sm text-gray-600">{assessmentData.contactPhone || ''}</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col md:flex-row gap-3 justify-center">
+                    <Link href="/contact" className="btn btn-primary btn-md">
+                      Book Onsite Walkthrough
+                    </Link>
+                    <button type="button" className="btn btn-ghost btn-md" onClick={handleRestart}>
+                      Start Another Assessment
+                    </button>
+                  </div>
+                  <p className="text-sm text-gray-500">
+                    Need immediate assistance? Call{' '}
+                    <a href="tel:+12145551234" className="text-primary-600 font-semibold hover:underline">
+                      (214) 555-1234
+                    </a>{' '}
+                    and mention your assessment request.
+                  </p>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-primary-600 h-2 rounded-full" style={{ width: '20%' }} />
-                </div>
-              </div>
+              ) : (
+                <>
+                  <div className="mb-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                      <h3 className="text-xl font-semibold">
+                        STEP {assessmentStep + 1} of {totalAssessmentSteps}: {currentStepMeta.title}
+                      </h3>
+                      <span className="text-sm text-gray-500">{progressPercent}% Complete</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                      <div className="bg-primary-600 h-2 rounded-full transition-all duration-300" style={{ width: `${progressPercent}%` }} />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-3">{currentStepMeta.helper}</p>
+                  </div>
 
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                {[
-                  { icon: '🏗️', label: 'New Installation' },
-                  { icon: '⬆️', label: 'Upgrade' },
-                  { icon: '➕', label: 'Expansion' },
-                  { icon: '🔧', label: 'Repair' },
-                ].map((option) => (
-                  <button
-                    key={option.label}
-                    className="p-6 border-2 border-gray-200 rounded-lg hover:border-primary-500 hover:bg-primary-50 transition-all text-center group"
-                  >
-                    <div className="text-4xl mb-2">{option.icon}</div>
-                    <div className="font-semibold group-hover:text-primary-600">{option.label}</div>
-                  </button>
-                ))}
-              </div>
+                  <div>{renderStepContent()}</div>
 
-              <div className="mb-6">
-                <button className="w-full btn btn-primary btn-lg">
-                  Next Step →
-                </button>
-              </div>
+                  {formError && <p className="text-sm text-red-600 mt-4">{formError}</p>}
 
-              <div className="text-center space-y-2 text-sm text-gray-600">
-                <p className="flex items-center justify-center gap-2">
-                  <svg className="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                  Your information is secure and never shared
-                </p>
-                <p>📞 Prefer to talk? Call <a href="tel:+12145551234" className="text-primary-600 font-semibold hover:underline">(214) 555-1234</a></p>
-              </div>
+                  <div className="flex flex-col sm:flex-row gap-3 mt-8">
+                    {assessmentStep > 0 && (
+                      <button type="button" className="btn btn-ghost btn-md sm:flex-1" onClick={handleBack}>
+                        ← Back
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-md sm:flex-1"
+                      onClick={handleNext}
+                      disabled={assessmentStatus === 'submitting'}
+                    >
+                      {assessmentStep === totalAssessmentSteps - 1
+                        ? assessmentStatus === 'submitting'
+                          ? 'Submitting…'
+                          : 'Submit Assessment'
+                        : 'Next Step →'}
+                    </button>
+                  </div>
+
+                  <div className="text-center space-y-2 text-sm text-gray-600 mt-6">
+                    <p className="flex items-center justify-center gap-2">
+                      <svg className="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                      Your information is secure and never shared
+                    </p>
+                    <p>
+                      📞 Prefer to talk? Call{' '}
+                      <a href="tel:+12145551234" className="text-primary-600 font-semibold hover:underline">
+                        (214) 555-1234
+                      </a>
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -35,7 +35,7 @@ export default function FAQPage() {
         },
         {
           q: 'Can you work with existing infrastructure?',
-          a: 'Absolutely. We can integrate with existing cabling systems, perform upgrades, add capacity, and remediate problematic installations. We'll assess your current infrastructure and recommend the best path forward.',
+          a: "Absolutely. We can integrate with existing cabling systems, perform upgrades, add capacity, and remediate problematic installations. We'll assess your current infrastructure and recommend the best path forward.",
         },
         {
           q: 'Do you provide cable testing and certification?',
@@ -73,7 +73,7 @@ export default function FAQPage() {
         },
         {
           q: 'Are you licensed and insured?',
-          a: 'Yes, we are fully licensed, bonded, and insured with $5 million in general liability coverage. We also carry workers' compensation insurance and can provide certificates of insurance for your facility.',
+          a: "Yes, we are fully licensed, bonded, and insured with $5 million in general liability coverage. We also carry workers' compensation insurance and can provide certificates of insurance for your facility.",
         },
       ],
     },
@@ -86,7 +86,7 @@ export default function FAQPage() {
         },
         {
           q: 'When should I use fiber optic instead of copper?',
-          a: 'Fiber is recommended for distances over 100 meters, high-bandwidth applications (10/40/100 Gigabit), electromagnetic interference environments, inter-building connections, and maximum future-proofing. We'll recommend the best solution for your needs.',
+          a: "Fiber is recommended for distances over 100 meters, high-bandwidth applications (10/40/100 Gigabit), electromagnetic interference environments, inter-building connections, and maximum future-proofing. We'll recommend the best solution for your needs.",
         },
         {
           q: 'Do you provide network design services?',
@@ -103,11 +103,11 @@ export default function FAQPage() {
         },
         {
           q: 'Do you work on data center projects?',
-          a: 'Absolutely. We specialize in data center cabling including high-density fiber arrays, structured copper systems, cable management, and hot/cold aisle containment. We're experienced with colocation facilities, enterprise data centers, and edge computing sites.',
+          a: "Absolutely. We specialize in data center cabling including high-density fiber arrays, structured copper systems, cable management, and hot/cold aisle containment. We're experienced with colocation facilities, enterprise data centers, and edge computing sites.",
         },
         {
           q: 'Can you relocate existing network infrastructure?',
-          a: 'Yes, we handle office moves, data center migrations, and equipment relocations. We'll document your existing setup, carefully disconnect and label everything, transport if needed, and reinstall at the new location with full testing.',
+          a: "Yes, we handle office moves, data center migrations, and equipment relocations. We'll document your existing setup, carefully disconnect and label everything, transport if needed, and reinstall at the new location with full testing.",
         },
       ],
     },
