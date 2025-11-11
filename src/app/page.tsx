@@ -1,0 +1,544 @@
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+import { services } from '@/data/services'
+import { getFeaturedCaseStudies } from '@/data/case-studies'
+
+export default function HomePage() {
+  const [activeTab, setActiveTab] = useState(0)
+  const featuredProjects = getFeaturedCaseStudies()
+
+  return (
+    <main className="overflow-x-hidden">
+      {/* SECTION 1: HERO */}
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero text-white">
+        <div className="absolute inset-0 z-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20">
+        </div>
+
+        <div className="relative z-10 container-custom py-20 text-center">
+          <div className="max-w-4xl mx-auto animate-fade-in">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-balance">
+              Pentagon-Grade Network Cabling<br />
+              <span className="text-primary-300">for Dallas-Fort Worth Businesses</span>
+            </h1>
+
+            <p className="text-xl md:text-2xl mb-4 text-gray-200">
+              BICSI-Certified Experts
+            </p>
+            <p className="text-lg md:text-xl mb-8 text-gray-300">
+              Trusted by Federal Government & Fortune 500 Companies
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+              <Link href="/contact" className="btn btn-primary btn-lg">
+                Get Free Quote
+              </Link>
+              <Link href="/portfolio" className="btn btn-secondary btn-lg">
+                View Elite Projects
+              </Link>
+            </div>
+
+            <div className="flex items-center justify-center gap-2 text-yellow-400">
+              <span className="text-2xl">★★★★★</span>
+              <span className="text-white">4.9/5 from 127 reviews</span>
+            </div>
+          </div>
+
+          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2: TRUST BAR */}
+      <section className="bg-white py-8 border-b border-gray-200 overflow-hidden">
+        <div className="flex gap-12 animate-marquee">
+          {[...Array(2)].map((_, setIndex) => (
+            <div key={setIndex} className="flex gap-12 items-center min-w-max">
+              <div className="flex items-center gap-3">
+                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">🏛️</span>
+                </div>
+                <span className="font-semibold text-gray-700">BICSI Certified</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">🛡️</span>
+                </div>
+                <span className="font-semibold text-gray-700">Pentagon Projects</span>
+              </div>
+
+              <div className="w-24 h-16 relative grayscale hover:grayscale-0 transition-all">
+                <div className="w-full h-full bg-gray-200 flex items-center justify-center rounded">
+                  <span className="text-xs text-gray-600">Client Logo</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">🏆</span>
+                </div>
+                <span className="font-semibold text-gray-700">1,000+ Projects</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">⚡</span>
+                </div>
+                <span className="font-semibold text-gray-700">24/7 Support</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">✓</span>
+                </div>
+                <span className="font-semibold text-gray-700">Licensed & Insured</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 3: ELITE PROJECTS SHOWCASE */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Projects That Define <span className="gradient-text">Excellence</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              From federal government to Fortune 500 — we deliver mission-critical infrastructure
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {featuredProjects.slice(0, 3).map((project) => (
+              <Link
+                key={project.id}
+                href={`/portfolio/case-studies/${project.slug}`}
+                className="card card-hover group"
+              >
+                <div className="relative h-64 mb-4 rounded-lg overflow-hidden bg-gray-200">
+                  <div className="absolute inset-0 bg-gradient-hero opacity-80 group-hover:opacity-60 transition-opacity" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-6">
+                    <div className="text-5xl mb-4">
+                      {project.industry === 'Federal Government' && '🏛️'}
+                      {project.industry === 'Sports & Entertainment' && '🏟️'}
+                      {project.industry === 'Federal Government - Aviation' && '✈️'}
+                    </div>
+                    <h3 className="text-2xl font-bold text-center mb-2">{project.client}</h3>
+                    <p className="text-gray-200 text-center">{project.industry}</p>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  {project.stats.slice(0, 2).map((stat, idx) => (
+                    <div key={idx} className="flex justify-between text-sm">
+                      <span className="text-gray-600">{stat.label}:</span>
+                      <span className="font-semibold text-gray-900">{stat.value}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-4 text-primary-600 font-semibold group-hover:text-primary-700 flex items-center gap-2">
+                  View Case Study
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link href="/portfolio" className="btn btn-primary btn-md">
+              View All Elite Projects
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: SERVICES GRID */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Comprehensive Infrastructure <span className="gradient-text">Solutions</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              One partner for all your connectivity needs — from copper to fiber, security to voice
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={service.id}
+                className="card card-hover group"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="text-5xl mb-4">{service.icon}</div>
+
+                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary-600 transition-colors">
+                  {service.name}
+                </h3>
+
+                <p className="text-gray-600 mb-4 line-clamp-3">
+                  {service.description}
+                </p>
+
+                <ul className="space-y-2 mb-6">
+                  {service.features.slice(0, 3).map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
+                      <svg className="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="btn btn-ghost btn-sm w-full group-hover:bg-primary-50"
+                >
+                  Learn More →
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: WHY CHOOSE US */}
+      <section className="section-padding bg-primary-900 text-white">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Why Dallas Businesses Choose <span className="text-texas-gold">Cable-Com</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white/10 backdrop-blur rounded-xl p-8 hover:bg-white/15 transition-all">
+              <div className="text-6xl text-texas-gold mb-4 font-bold">#1</div>
+              <h3 className="text-2xl font-bold mb-3">BICSI Certified Excellence</h3>
+              <p className="text-gray-300">
+                Our technicians hold industry gold-standard BICSI certifications, ensuring every installation meets and exceeds TIA/EIA standards. Pentagon-level quality on every project.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur rounded-xl p-8 hover:bg-white/15 transition-all">
+              <div className="text-6xl text-texas-gold mb-4 font-bold">#2</div>
+              <h3 className="text-2xl font-bold mb-3">Federal Experience</h3>
+              <p className="text-gray-300">
+                Trusted by Pentagon, FAA, and military installations. We bring government-grade security protocols and quality standards to every commercial project.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur rounded-xl p-8 hover:bg-white/15 transition-all">
+              <div className="text-6xl text-texas-gold mb-4 font-bold">#3</div>
+              <h3 className="text-2xl font-bold mb-3">1,000+ Successful Projects</h3>
+              <p className="text-gray-300">
+                Proven track record across healthcare, education, manufacturing, government, and enterprise sectors. From 10-drop offices to 2,000+ drop campuses.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur rounded-xl p-8 hover:bg-white/15 transition-all">
+              <div className="text-6xl text-texas-gold mb-4 font-bold">#4</div>
+              <h3 className="text-2xl font-bold mb-3">5-Minute Response</h3>
+              <p className="text-gray-300">
+                Live chat, phone, email — we respond in minutes, not hours. 24/7 emergency service available. Your questions answered, your projects started fast.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6: INTERACTIVE SERVICE AREA MAP */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Serving the Entire <span className="gradient-text">Dallas-Fort Worth Metroplex</span>
+            </h2>
+            <p className="text-xl text-gray-600">
+              24/7 emergency service available across all DFW communities
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h3 className="text-2xl font-bold mb-6">Cities We Serve:</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {['Dallas', 'Fort Worth', 'Plano', 'Irving', 'Arlington', 'Frisco', 'McKinney', 'Richardson'].map((city) => (
+                    <Link
+                      key={city}
+                      href={`/service-areas/${city.toLowerCase().replace(' ', '-')}`}
+                      className="flex items-center gap-2 text-gray-700 hover:text-primary-600 transition-colors group"
+                    >
+                      <svg className="w-4 h-4 text-primary-500 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      {city}
+                    </Link>
+                  ))}
+                </div>
+                <Link href="/service-areas" className="mt-6 inline-block text-primary-600 font-semibold hover:text-primary-700">
+                  View all 20+ service areas →
+                </Link>
+              </div>
+
+              <div className="bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl p-8 aspect-square flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-7xl mb-4">🗺️</div>
+                  <p className="text-2xl font-bold text-primary-900">DFW Metroplex</p>
+                  <p className="text-primary-700 mt-2">Interactive map coming soon</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-12 text-center">
+              <a href="tel:+12145551234" className="btn btn-emergency btn-lg">
+                24/7 Emergency Service: (214) 555-1234
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: VIDEO TESTIMONIALS */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Don't Just Take Our <span className="gradient-text">Word For It</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Hear from clients who trust us with their critical infrastructure
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
+              <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                <div className="text-center text-white">
+                  <div className="w-20 h-20 mx-auto mb-4 bg-white/10 rounded-full flex items-center justify-center backdrop-blur">
+                    <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-400">Video Player Placeholder</p>
+                  <p className="text-sm text-gray-500 mt-2">Pentagon Project Manager Testimonial</p>
+                </div>
+              </div>
+
+              <div className="bg-gray-800 p-8 text-white">
+                <p className="text-xl italic mb-4">
+                  "Cable-Com's attention to security detail was exactly what we needed for our classified installation. Their team demonstrated exceptional professionalism in a challenging high-security environment."
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center">
+                    <span className="text-xl">👤</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold">James Mitchell</p>
+                    <p className="text-gray-400 text-sm">Facilities Director, U.S. Department of Defense</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-center gap-2 mt-8">
+              {[0, 1, 2, 3, 4].map((i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveTab(i)}
+                  className={`w-3 h-3 rounded-full transition-all ${
+                    activeTab === i ? 'bg-primary-600 w-8' : 'bg-gray-300'
+                  }`}
+                  aria-label={`View testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            <div className="flex items-center justify-center gap-8 mt-8">
+              <div className="text-center">
+                <div className="text-yellow-400 text-2xl mb-1">★★★★★</div>
+                <p className="text-sm text-gray-600">4.9/5 Average</p>
+              </div>
+              <div className="h-12 w-px bg-gray-300" />
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary-600 mb-1">127</div>
+                <p className="text-sm text-gray-600">Total Reviews</p>
+              </div>
+            </div>
+
+            <div className="text-center mt-8">
+              <Link href="/testimonials" className="btn btn-secondary btn-md">
+                Read All 127 Reviews
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8: SMART QUOTE FORM */}
+      <section className="section-padding bg-gradient-to-br from-primary-50 to-blue-50">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                Get Your Free <span className="gradient-text">Network Assessment</span>
+              </h2>
+              <p className="text-xl text-gray-600">
+                No obligation — See what your project will cost in less than 60 seconds
+              </p>
+            </div>
+
+            <div className="card shadow-2xl">
+              <div className="mb-6">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-semibold">STEP 1 of 5: What type of project?</h3>
+                  <span className="text-sm text-gray-500">20% Complete</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="bg-primary-600 h-2 rounded-full" style={{ width: '20%' }} />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {[
+                  { icon: '🏗️', label: 'New Installation' },
+                  { icon: '⬆️', label: 'Upgrade' },
+                  { icon: '➕', label: 'Expansion' },
+                  { icon: '🔧', label: 'Repair' },
+                ].map((option) => (
+                  <button
+                    key={option.label}
+                    className="p-6 border-2 border-gray-200 rounded-lg hover:border-primary-500 hover:bg-primary-50 transition-all text-center group"
+                  >
+                    <div className="text-4xl mb-2">{option.icon}</div>
+                    <div className="font-semibold group-hover:text-primary-600">{option.label}</div>
+                  </button>
+                ))}
+              </div>
+
+              <div className="mb-6">
+                <button className="w-full btn btn-primary btn-lg">
+                  Next Step →
+                </button>
+              </div>
+
+              <div className="text-center space-y-2 text-sm text-gray-600">
+                <p className="flex items-center justify-center gap-2">
+                  <svg className="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  Your information is secure and never shared
+                </p>
+                <p>📞 Prefer to talk? Call <a href="tel:+12145551234" className="text-primary-600 font-semibold hover:underline">(214) 555-1234</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 9: FAQ ACCORDION */}
+      <section className="section-padding bg-white">
+        <div className="container-custom max-w-4xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Frequently Asked <span className="gradient-text">Questions</span>
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: 'How much does network cabling cost in Dallas?',
+                a: 'Network cabling costs in Dallas typically range from $85-150 per drop for Cat6/Cat6a structured cabling. Fiber optic installations run $10-25 per foot. Data center projects are quoted based on complexity. Factors affecting price include cable type, distance, labor complexity, and volume. We provide detailed quotes after a free site assessment.',
+              },
+              {
+                q: "What's the difference between Cat6 and Cat6a?",
+                a: 'Cat6 supports up to 1 Gbps at 100 meters and 10 Gbps at 55 meters. Cat6a supports 10 Gbps at the full 100-meter distance and has better alien crosstalk protection, making it ideal for dense cable environments and future-proofing. We typically recommend Cat6a for new installations.',
+              },
+              {
+                q: 'Do you provide after-hours installation?',
+                a: 'Yes, we offer after-hours, weekend, and holiday installation services to minimize disruption to your business operations. Many of our clients prefer overnight installations for office environments. 24/7 emergency service is also available for critical issues.',
+              },
+              {
+                q: 'Are you insured and licensed in Texas?',
+                a: 'Yes, Cable-Com Services Dallas is fully licensed, bonded, and insured in Texas. We carry $2M general liability and $1M workers compensation insurance. Our technicians hold BICSI certifications and have passed background checks for work in secure facilities.',
+              },
+              {
+                q: 'How long does a typical installation take?',
+                a: 'A 50-drop office installation typically takes 3-5 business days. Larger projects (200+ drops) may take 2-4 weeks. Data center projects vary widely based on complexity. We provide detailed timelines during the planning phase and work efficiently to minimize downtime.',
+              },
+              {
+                q: 'Do you offer maintenance contracts?',
+                a: 'Yes, we offer comprehensive maintenance and support contracts including regular inspections, testing, documentation updates, priority emergency response, and discounted rates for moves/adds/changes. Contracts are customized based on your infrastructure size and support needs.',
+              },
+            ].map((faq, index) => (
+              <details key={index} className="group card">
+                <summary className="flex items-center justify-between cursor-pointer list-none">
+                  <span className="text-lg font-semibold group-open:text-primary-600">
+                    {faq.q}
+                  </span>
+                  <svg
+                    className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="mt-4 text-gray-600 leading-relaxed">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/faq" className="text-primary-600 font-semibold hover:text-primary-700">
+              View All FAQs →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 10: FINAL CTA */}
+      <section className="relative py-24 md:py-32">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-900 via-primary-700 to-primary-900" />
+
+        <div className="relative z-10 container-custom text-center text-white">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Ready to Start Your Project?
+          </h2>
+          <p className="text-xl md:text-2xl mb-10 text-gray-200">
+            Get a free quote in less than 60 seconds
+          </p>
+
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center px-12 py-5 text-xl font-bold bg-texas-gold text-primary-900 rounded-lg hover:bg-yellow-500 transition-all hover:scale-105 shadow-2xl"
+          >
+            Get Free Quote Now
+          </Link>
+
+          <p className="mt-8 text-lg text-gray-300">
+            Or call us 24/7: <a href="tel:+12145551234" className="text-white font-bold hover:underline">(214) 555-1234</a>
+          </p>
+        </div>
+      </section>
+    </main>
+  )
+}
