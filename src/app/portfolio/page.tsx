@@ -123,29 +123,43 @@ export default function PortfolioPage() {
             </p>
           </div>
           <div className="space-y-8">
-            {featured.map((project, index) => (
-              <Link
-                key={project.slug}
-                href={`/portfolio/case-studies/${project.slug}`}
-                className="card card-hover group block"
-              >
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div
-                    className={`${
-                      index % 2 === 1 ? 'md:order-2' : ''
-                    } bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl p-12 flex items-center justify-center`}
-                  >
-                    <div className="text-center">
-                      <div className="text-6xl mb-4">
-                        {project.industry === 'Federal Government' && '🏛️'}
-                        {project.industry === 'Sports & Entertainment' && '🏟️'}
-                        {project.industry === 'Transportation' && '✈️'}
-                        {project.industry === 'Food Manufacturing' && '🏭'}
-                        {project.industry === 'Military' && '🎖️'}
+            {featured.map((project, index) => {
+              // Map client to logo image
+              const logoMap: { [key: string]: string } = {
+                'U.S. Department of Defense': '/images/clients/pentagon.jpg',
+                'Staples Center (now Crypto.com Arena)': '/images/clients/staples-center.jpg',
+                'Federal Aviation Administration': '/images/clients/faa.jpeg',
+                'Golden West Food Group': '/images/clients/golden-west-food.png',
+              }
+              const logoSrc = logoMap[project.client]
+
+              return (
+                <Link
+                  key={project.slug}
+                  href={`/portfolio/case-studies/${project.slug}`}
+                  className="card card-hover group block"
+                >
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div
+                      className={`${
+                        index % 2 === 1 ? 'md:order-2' : ''
+                      } bg-white rounded-xl p-12 flex items-center justify-center border border-gray-200`}
+                    >
+                      <div className="text-center w-full">
+                        {logoSrc && (
+                          <div className="mb-6 flex items-center justify-center">
+                            <Image
+                              src={logoSrc}
+                              alt={project.client}
+                              width={300}
+                              height={150}
+                              className="object-contain max-h-32 w-auto filter drop-shadow-lg"
+                            />
+                          </div>
+                        )}
+                        <div className="text-xl font-bold text-gray-900">{project.client}</div>
                       </div>
-                      <div className="text-2xl font-bold text-primary-900">{project.client}</div>
                     </div>
-                  </div>
                   <div className="flex flex-col justify-center">
                     <div className="inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-semibold mb-3 self-start">
                       {project.industry}
@@ -176,7 +190,8 @@ export default function PortfolioPage() {
                   </div>
                 </div>
               </Link>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
@@ -191,21 +206,41 @@ export default function PortfolioPage() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {caseStudies.map((project) => (
-              <Link
-                key={project.slug}
-                href={`/portfolio/case-studies/${project.slug}`}
-                className="card card-hover group"
-              >
-                <div className="bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl h-48 mb-6 flex items-center justify-center">
-                  <div className="text-6xl">
-                    {project.industry === 'Federal Government' && '🏛️'}
-                    {project.industry === 'Sports & Entertainment' && '🏟️'}
-                    {project.industry === 'Transportation' && '✈️'}
-                    {project.industry === 'Food Manufacturing' && '🏭'}
-                    {project.industry === 'Military' && '🎖️'}
+            {caseStudies.map((project) => {
+              // Map client to logo image
+              const logoMap: { [key: string]: string } = {
+                'U.S. Department of Defense': '/images/clients/pentagon.jpg',
+                'Staples Center (now Crypto.com Arena)': '/images/clients/staples-center.jpg',
+                'Federal Aviation Administration': '/images/clients/faa.jpeg',
+                'Golden West Food Group': '/images/clients/golden-west-food.png',
+              }
+              const logoSrc = logoMap[project.client]
+
+              return (
+                <Link
+                  key={project.slug}
+                  href={`/portfolio/case-studies/${project.slug}`}
+                  className="card card-hover group"
+                >
+                  <div className="bg-white border border-gray-200 rounded-xl h-48 mb-6 flex items-center justify-center p-6">
+                    {logoSrc ? (
+                      <Image
+                        src={logoSrc}
+                        alt={project.client}
+                        width={200}
+                        height={100}
+                        className="object-contain max-h-32 w-auto"
+                      />
+                    ) : (
+                      <div className="text-6xl">
+                        {project.industry === 'Federal Government' && '🏛️'}
+                        {project.industry === 'Sports & Entertainment' && '🏟️'}
+                        {project.industry === 'Federal Government - Aviation' && '✈️'}
+                        {project.industry === 'Food Manufacturing' && '🏭'}
+                        {project.industry === 'Military' && '🎖️'}
+                      </div>
+                    )}
                   </div>
-                </div>
                 <div className="inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-xs font-semibold mb-3">
                   {project.industry}
                 </div>
@@ -230,7 +265,8 @@ export default function PortfolioPage() {
                   </svg>
                 </div>
               </Link>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>

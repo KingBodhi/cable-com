@@ -10,16 +10,16 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          50: '#E6F2FF',
-          100: '#CCE5FF',
-          200: '#99CBFF',
-          300: '#4D94DB',
-          400: '#3380CC',
-          500: '#0066CC',
-          600: '#0052A3',
-          700: '#003D7A',
-          800: '#002952',
-          900: '#001F3F',
+          50: '#F0FDF4',
+          100: '#DCFCE7',
+          200: '#BBF7D0',
+          300: '#86EFAC',
+          400: '#4ADE80',
+          500: '#22C55E',
+          600: '#16A34A',
+          700: '#15803D',
+          800: '#166534',
+          900: '#14532D',
         },
         texas: {
           red: '#BF0A30',
@@ -61,8 +61,8 @@ const config: Config = {
         'inner': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       },
       backgroundImage: {
-        'gradient-hero': 'linear-gradient(135deg, #001F3F 0%, #003D7A 100%)',
-        'gradient-cta': 'linear-gradient(90deg, #0066CC 0%, #4D94DB 100%)',
+        'gradient-hero': 'linear-gradient(135deg, #14532D 0%, #15803D 100%)',
+        'gradient-cta': 'linear-gradient(90deg, #22C55E 0%, #4ADE80 100%)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in',

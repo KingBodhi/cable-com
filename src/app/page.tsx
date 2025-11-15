@@ -537,24 +537,40 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {featuredProjects.slice(0, 3).map((project) => (
-              <Link
-                key={project.id}
-                href={`/portfolio/case-studies/${project.slug}`}
-                className="card card-hover group"
-              >
-                <div className="relative h-64 mb-4 rounded-lg overflow-hidden bg-gray-200">
-                  <div className="absolute inset-0 bg-gradient-hero opacity-80 group-hover:opacity-60 transition-opacity" />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-6">
-                    <div className="text-5xl mb-4">
-                      {project.industry === 'Federal Government' && '🏛️'}
-                      {project.industry === 'Sports & Entertainment' && '🏟️'}
-                      {project.industry === 'Federal Government - Aviation' && '✈️'}
+            {featuredProjects.slice(0, 3).map((project) => {
+              // Map client to logo image
+              const logoMap: { [key: string]: string } = {
+                'U.S. Department of Defense': '/images/clients/pentagon.jpg',
+                'Staples Center (now Crypto.com Arena)': '/images/clients/staples-center.jpg',
+                'Federal Aviation Administration': '/images/clients/faa.jpeg',
+                'Golden West Food Group': '/images/clients/golden-west-food.png',
+              }
+              const logoSrc = logoMap[project.client]
+
+              return (
+                <Link
+                  key={project.id}
+                  href={`/portfolio/case-studies/${project.slug}`}
+                  className="card card-hover group"
+                >
+                  <div className="relative h-64 mb-4 rounded-lg overflow-hidden bg-white">
+                    <div className="absolute inset-0 bg-gradient-hero opacity-20 group-hover:opacity-10 transition-opacity" />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
+                      {logoSrc && (
+                        <div className="mb-4 flex items-center justify-center h-24">
+                          <Image
+                            src={logoSrc}
+                            alt={project.client}
+                            width={200}
+                            height={96}
+                            className="object-contain max-h-24 w-auto filter drop-shadow-lg"
+                          />
+                        </div>
+                      )}
+                      <h3 className="text-xl font-bold text-center mb-2 text-gray-900">{project.client}</h3>
+                      <p className="text-gray-600 text-center text-sm">{project.industry}</p>
                     </div>
-                    <h3 className="text-2xl font-bold text-center mb-2">{project.client}</h3>
-                    <p className="text-gray-200 text-center">{project.industry}</p>
                   </div>
-                </div>
 
                 <div className="space-y-2">
                   {project.stats.slice(0, 2).map((stat, idx) => (
@@ -565,66 +581,21 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                <div className="mt-4 text-primary-600 font-semibold group-hover:text-primary-700 flex items-center gap-2">
-                  View Case Study
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </Link>
-            ))}
+                  <div className="mt-4 text-primary-600 font-semibold group-hover:text-primary-700 flex items-center gap-2">
+                    View Case Study
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
 
-          <div className="text-center mb-16">
+          <div className="text-center">
             <Link href="/portfolio" className="btn btn-primary btn-md">
               View All Elite Projects
             </Link>
-          </div>
-
-          {/* Client Logos */}
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Trusted by Elite Organizations</h3>
-              <p className="text-gray-600">Delivering mission-critical infrastructure for government and enterprise</p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="flex items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                <Image
-                  src="/images/clients/pentagon.jpg"
-                  alt="Pentagon - U.S. Department of Defense"
-                  width={150}
-                  height={80}
-                  className="object-contain grayscale hover:grayscale-0 transition-all max-h-16 w-auto"
-                />
-              </div>
-              <div className="flex items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                <Image
-                  src="/images/clients/staples-center.jpg"
-                  alt="Staples Center - Sports & Entertainment"
-                  width={150}
-                  height={80}
-                  className="object-contain grayscale hover:grayscale-0 transition-all max-h-16 w-auto"
-                />
-              </div>
-              <div className="flex items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                <Image
-                  src="/images/clients/faa.jpeg"
-                  alt="Federal Aviation Administration"
-                  width={150}
-                  height={80}
-                  className="object-contain grayscale hover:grayscale-0 transition-all max-h-16 w-auto"
-                />
-              </div>
-              <div className="flex items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                <Image
-                  src="/images/clients/golden-west-food.png"
-                  alt="Golden West Food Group"
-                  width={150}
-                  height={80}
-                  className="object-contain grayscale hover:grayscale-0 transition-all max-h-16 w-auto"
-                />
-              </div>
-            </div>
           </div>
         </div>
       </section>
