@@ -3,8 +3,19 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import { services } from '@/data/services'
 import { getFeaturedCaseStudies } from '@/data/case-studies'
+
+// Dynamically import Map component (prevents SSR issues with Leaflet)
+const Map = dynamic(() => import('@/components/ui/Map'), {
+  ssr: false,
+  loading: () => (
+    <div className="h-full bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl flex items-center justify-center">
+      <p className="text-primary-700">Loading map...</p>
+    </div>
+  ),
+})
 
 type AssessmentFormData = {
   projectType: string
@@ -551,41 +562,43 @@ export default function HomePage() {
                 <Link
                   key={project.id}
                   href={`/portfolio/case-studies/${project.slug}`}
-                  className="card card-hover group"
+                  className="card card-hover group overflow-hidden p-0"
                 >
-                  <div className="relative h-64 mb-4 rounded-lg overflow-hidden bg-white">
-                    <div className="absolute inset-0 bg-gradient-hero opacity-20 group-hover:opacity-10 transition-opacity" />
-                    <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
-                      {logoSrc && (
-                        <div className="mb-4 flex items-center justify-center h-24">
-                          <Image
-                            src={logoSrc}
-                            alt={project.client}
-                            width={200}
-                            height={96}
-                            className="object-contain max-h-24 w-auto filter drop-shadow-lg"
-                          />
-                        </div>
-                      )}
-                      <h3 className="text-xl font-bold text-center mb-2 text-gray-900">{project.client}</h3>
-                      <p className="text-gray-600 text-center text-sm">{project.industry}</p>
+                  <div className="relative h-80 overflow-hidden">
+                    {/* Full-screen background image */}
+                    {logoSrc && (
+                      <Image
+                        src={logoSrc}
+                        alt={project.client}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    )}
+                    {/* Gradient overlay that reduces on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-gray-900/30 group-hover:from-gray-900/90 group-hover:via-gray-900/50 group-hover:to-transparent transition-all duration-500" />
+                    {/* Text overlay */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-white">
+                      <h3 className="text-2xl font-bold text-center mb-2 drop-shadow-lg">{project.client}</h3>
+                      <p className="text-gray-200 text-center text-sm drop-shadow-md">{project.industry}</p>
                     </div>
                   </div>
 
-                <div className="space-y-2">
-                  {project.stats.slice(0, 2).map((stat, idx) => (
-                    <div key={idx} className="flex justify-between text-sm">
-                      <span className="text-gray-600">{stat.label}:</span>
-                      <span className="font-semibold text-gray-900">{stat.value}</span>
+                  <div className="p-6 space-y-4">
+                    <div className="space-y-2">
+                      {project.stats.slice(0, 2).map((stat, idx) => (
+                        <div key={idx} className="flex justify-between text-sm">
+                          <span className="text-gray-600">{stat.label}:</span>
+                          <span className="font-semibold text-gray-900">{stat.value}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
 
-                  <div className="mt-4 text-primary-600 font-semibold group-hover:text-primary-700 flex items-center gap-2">
-                    View Case Study
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                    <div className="text-primary-600 font-semibold group-hover:text-primary-700 flex items-center gap-2">
+                      View Case Study
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
                   </div>
                 </Link>
               )
@@ -733,13 +746,23 @@ export default function HomePage() {
                 </Link>
               </div>
 
-              <div className="bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl p-8 aspect-square flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-7xl mb-4">🗺️</div>
-                  <p className="text-2xl font-bold text-primary-900">DFW Metroplex</p>
-                  <p className="text-primary-700 mt-2">Interactive map coming soon</p>
-                </div>
+              <div className="rounded-xl overflow-hidden shadow-lg aspect-square">
+                <Map
+                  latitude={32.646569}
+                  longitude={-97.293374}
+                  zoom={10}
+                  height="100%"
+                  markerTitle="Cable-Com Services"
+                  markerDescription="2101 Joel East Road, Fort Worth, TX 76140"
+                />
               </div>
+            </div>
+
+            {/* Professional Quote */}
+            <div className="mt-12 border-l-4 border-primary-500 bg-primary-50 p-6 md:p-8 rounded-r-lg">
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed italic">
+                "Our licensed technicians handle every detail from installing, labeling, and testing your cabling infrastructure to exacting standards. We provide thorough documentation, network diagrams, and post-installation support, so your team can stay focused and productive from day one."
+              </p>
             </div>
 
             <div className="mt-12 text-center">

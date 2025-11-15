@@ -137,57 +137,61 @@ export default function PortfolioPage() {
                 <Link
                   key={project.slug}
                   href={`/portfolio/case-studies/${project.slug}`}
-                  className="card card-hover group block"
+                  className="card card-hover group block overflow-hidden p-0"
                 >
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="grid md:grid-cols-2 gap-0">
                     <div
                       className={`${
                         index % 2 === 1 ? 'md:order-2' : ''
-                      } bg-white rounded-xl p-12 flex items-center justify-center border border-gray-200`}
+                      } relative h-80 md:h-auto overflow-hidden`}
                     >
-                      <div className="text-center w-full">
-                        {logoSrc && (
-                          <div className="mb-6 flex items-center justify-center">
-                            <Image
-                              src={logoSrc}
-                              alt={project.client}
-                              width={300}
-                              height={150}
-                              className="object-contain max-h-32 w-auto filter drop-shadow-lg"
-                            />
-                          </div>
-                        )}
-                        <div className="text-xl font-bold text-gray-900">{project.client}</div>
+                      {/* Full-screen background image */}
+                      {logoSrc && (
+                        <Image
+                          src={logoSrc}
+                          alt={project.client}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                      )}
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/70 via-gray-900/50 to-transparent group-hover:from-gray-900/60 group-hover:via-gray-900/30 transition-all duration-700" />
+                      {/* Text overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center p-12">
+                        <div className="text-center text-white">
+                          <h3 className="text-3xl font-bold drop-shadow-lg">{project.client}</h3>
+                          <p className="text-gray-200 mt-2 drop-shadow-md">{project.industry}</p>
+                        </div>
                       </div>
                     </div>
-                  <div className="flex flex-col justify-center">
-                    <div className="inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-semibold mb-3 self-start">
-                      {project.industry}
+                    <div className="flex flex-col justify-center p-8 md:p-12">
+                      <div className="inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-semibold mb-3 self-start">
+                        {project.industry}
+                      </div>
+                      <h3 className="text-3xl font-bold mb-3 text-gray-900 group-hover:text-primary-600 transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-600 mb-6">{project.challenge.substring(0, 200)}...</p>
+                      <div className="grid grid-cols-2 gap-4 mb-6">
+                        {project.stats.slice(0, 4).map((stat, i) => (
+                          <div key={i}>
+                            <div className="text-2xl font-bold text-primary-600">{stat.value}</div>
+                            <div className="text-sm text-gray-600">{stat.label}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="text-primary-600 font-semibold flex items-center gap-2">
+                        View Case Study
+                        <svg
+                          className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
                     </div>
-                    <h3 className="text-3xl font-bold mb-3 text-gray-900 group-hover:text-primary-600 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 mb-6">{project.challenge.substring(0, 200)}...</p>
-                    <div className="grid grid-cols-2 gap-4 mb-6">
-                      {project.stats.slice(0, 4).map((stat, i) => (
-                        <div key={i}>
-                          <div className="text-2xl font-bold text-primary-600">{stat.value}</div>
-                          <div className="text-sm text-gray-600">{stat.label}</div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="text-primary-600 font-semibold flex items-center gap-2">
-                      View Case Study
-                      <svg
-                        className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </div>
                 </div>
               </Link>
               )
@@ -220,50 +224,62 @@ export default function PortfolioPage() {
                 <Link
                   key={project.slug}
                   href={`/portfolio/case-studies/${project.slug}`}
-                  className="card card-hover group"
+                  className="card card-hover group overflow-hidden p-0"
                 >
-                  <div className="bg-white border border-gray-200 rounded-xl h-48 mb-6 flex items-center justify-center p-6">
+                  <div className="relative h-64 overflow-hidden">
                     {logoSrc ? (
-                      <Image
-                        src={logoSrc}
-                        alt={project.client}
-                        width={200}
-                        height={100}
-                        className="object-contain max-h-32 w-auto"
-                      />
+                      <>
+                        {/* Full-screen background image */}
+                        <Image
+                          src={logoSrc}
+                          alt={project.client}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-gray-900/20 group-hover:from-gray-900/80 group-hover:via-gray-900/40 transition-all duration-500" />
+                        {/* Text overlay */}
+                        <div className="absolute inset-0 flex items-center justify-center p-6">
+                          <div className="text-center text-white">
+                            <h4 className="text-xl font-bold drop-shadow-lg">{project.client}</h4>
+                          </div>
+                        </div>
+                      </>
                     ) : (
-                      <div className="text-6xl">
-                        {project.industry === 'Federal Government' && '🏛️'}
-                        {project.industry === 'Sports & Entertainment' && '🏟️'}
-                        {project.industry === 'Federal Government - Aviation' && '✈️'}
-                        {project.industry === 'Food Manufacturing' && '🏭'}
-                        {project.industry === 'Military' && '🎖️'}
+                      <div className="bg-gradient-to-br from-primary-100 to-primary-200 h-full flex items-center justify-center">
+                        <div className="text-6xl">
+                          {project.industry === 'Federal Government' && '🏛️'}
+                          {project.industry === 'Sports & Entertainment' && '🏟️'}
+                          {project.industry === 'Federal Government - Aviation' && '✈️'}
+                          {project.industry === 'Food Manufacturing' && '🏭'}
+                          {project.industry === 'Military' && '🎖️'}
+                        </div>
                       </div>
                     )}
                   </div>
-                <div className="inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-xs font-semibold mb-3">
-                  {project.industry}
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-primary-600 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 text-sm mb-4">{project.client}</p>
-                <div className="pt-4 border-t border-gray-200">
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    {project.stats.slice(0, 2).map((stat, i) => (
-                      <div key={i}>
-                        <div className="text-lg font-bold text-primary-600">{stat.value}</div>
-                        <div className="text-xs text-gray-600">{stat.label}</div>
-                      </div>
-                    ))}
+
+                  <div className="p-6 space-y-4">
+                    <div className="inline-block bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-xs font-semibold">
+                      {project.industry}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
+                      {project.title}
+                    </h3>
+                    <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200">
+                      {project.stats.slice(0, 2).map((stat, i) => (
+                        <div key={i}>
+                          <div className="text-lg font-bold text-primary-600">{stat.value}</div>
+                          <div className="text-xs text-gray-600">{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="text-primary-600 font-semibold flex items-center gap-2">
+                      View Case Study
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
                   </div>
-                </div>
-                <div className="text-primary-600 font-semibold flex items-center gap-2">
-                  View Case Study
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
               </Link>
               )
             })}
