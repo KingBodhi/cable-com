@@ -73,12 +73,12 @@ export default function ContactPage() {
               <p className="text-primary-600 font-semibold text-lg">(469) 653-1275</p>
               <p className="text-sm text-gray-600 mt-2">Mon-Fri: 7AM-6PM<br />24/7 Emergency Service</p>
             </a>
-            <a href="mailto:info@cable-comservices.com" className="card card-hover text-center group">
+            <a href="mailto:contact@cable-comservices.com" className="card card-hover text-center group">
               <div className="w-16 h-16 bg-gradient-cta rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
                 ✉️
               </div>
               <h3 className="text-xl font-bold mb-2 text-gray-900">Email Us</h3>
-              <p className="text-primary-600 font-semibold">info@cable-comservices.com</p>
+              <p className="text-primary-600 font-semibold">contact@cable-comservices.com</p>
               <p className="text-sm text-gray-600 mt-2">Response within 4 hours</p>
             </a>
             <div className="card text-center">

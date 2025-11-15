@@ -363,7 +363,7 @@ npm run lint
 
 **Cable-Com Services Dallas**
 Phone: (469) 653-1275
-Email: info@cable-comservices.com
+Email: contact@cable-comservices.com
 Address: [Dallas Office Address]
 
 Emergency 24/7: (469) 653-1275

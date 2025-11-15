@@ -501,6 +501,96 @@ export const services: Service[] = [
       },
     ],
   },
+  {
+    id: 'starlink-installation',
+    name: 'Starlink Business Installation',
+    slug: 'starlink-installation',
+    tagline: 'Enterprise satellite internet with Pentagon-grade network integration',
+    description: 'Professional Starlink Business installation and network integration for enterprises, remote sites, and mission-critical backup connectivity. From rooftop to router, we deliver complete satellite internet solutions with automatic failover, priority support, and seamless integration into your existing network infrastructure.',
+    icon: '🛰️',
+    features: [
+      'Professional rooftop or ground mounting',
+      'Network integration with existing infrastructure',
+      'Automatic failover configuration',
+      'Priority business data access',
+      'Public IPv4 address setup',
+      'Enterprise firewall integration',
+    ],
+    benefits: [
+      '40-220+ Mbps speeds with low latency',
+      'Works anywhere with clear sky view',
+      'Priority network access over residential',
+      '24/7 business-grade support',
+      'Disaster recovery and backup internet',
+      'No trenching or traditional ISP required',
+    ],
+    applications: [
+      'Remote construction sites',
+      'Oil and gas field operations',
+      'Rural healthcare facilities',
+      'Temporary offices and events',
+      'Disaster recovery backup',
+      'Government remote installations',
+      'Agricultural operations',
+    ],
+    pricing: {
+      starting: '$1,200 per installation',
+      description: 'Installation includes professional mounting, network integration, router configuration, and testing. Equipment costs $699-$2,500 (client purchased). Monthly service $140-$500 through Starlink.',
+    },
+    process: [
+      {
+        step: 1,
+        title: 'Site Assessment & Planning',
+        description: 'Use Starlink app to verify clear sky view, assess optimal mounting location, review power requirements, and plan network integration points.',
+      },
+      {
+        step: 2,
+        title: 'Equipment Procurement',
+        description: 'Assist client in ordering Starlink Business kit, recommend mounting hardware, and specify network equipment for failover configuration.',
+      },
+      {
+        step: 3,
+        title: 'Professional Installation',
+        description: 'Install mounting hardware, position and secure dish, run power and data cables, weatherproof all connections, and ensure proper grounding.',
+      },
+      {
+        step: 4,
+        title: 'Network Integration',
+        description: 'Configure router and firewall, set up automatic failover to existing internet, implement network security policies, and test connectivity.',
+      },
+      {
+        step: 5,
+        title: 'Testing & Documentation',
+        description: 'Conduct speed tests, verify failover operation, document configuration, provide user training, and deliver maintenance guidelines.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is Starlink Business and who needs it?',
+        answer: 'Starlink Business is SpaceX\'s enterprise satellite internet service offering 40-220+ Mbps speeds with priority access, 24/7 support, and SLA guarantees. It\'s ideal for remote sites, backup internet, construction projects, and locations where traditional internet is unavailable or unreliable.',
+      },
+      {
+        question: 'How does Starlink compare to traditional internet?',
+        answer: 'Starlink works anywhere with a clear view of the sky, requires no trenching or infrastructure, and provides speeds comparable to cable internet. Business plans include priority network access, public IP addresses, and guaranteed uptime - perfect for backup connectivity or primary internet in remote locations.',
+      },
+      {
+        question: 'Can you integrate Starlink with our existing network?',
+        answer: 'Yes, we specialize in seamless integration. We configure automatic failover between your primary internet and Starlink backup, implement security policies, maintain your existing IP scheme, and ensure zero downtime during switching. Your users won\'t notice when failover occurs.',
+      },
+      {
+        question: 'What does installation include?',
+        answer: 'Professional installation includes site survey, optimal dish placement and mounting, weatherproof cable runs, power configuration, router setup, network integration, firewall configuration, failover testing, and complete documentation. Typical installation takes 4-8 hours.',
+      },
+      {
+        question: 'Do I need a clear view of the sky?',
+        answer: 'Yes, Starlink requires an unobstructed view of the northern sky (in North America). We use the Starlink app during site assessment to identify obstructions and determine the best mounting location. Trees, buildings, and other obstacles can degrade performance.',
+      },
+      {
+        question: 'What are the ongoing costs?',
+        answer: 'Equipment costs $699-$2,500 (one-time, client purchased). Monthly service is $140-$500 depending on data needs. We offer optional managed service packages for $150-$300/month including monitoring, support, and maintenance.',
+      },
+    ],
+  },
 ];
 
 export function getServiceBySlug(slug: string): Service | undefined {

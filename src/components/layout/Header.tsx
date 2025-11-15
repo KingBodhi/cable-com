@@ -36,6 +36,7 @@ export default function Header() {
     { name: 'Security Systems', slug: 'security-systems', icon: '🔒' },
     { name: 'Voice & Telephony', slug: 'voice-telephony', icon: '📞' },
     { name: 'Network Infrastructure', slug: 'network-infrastructure', icon: '🌐' },
+    { name: 'Starlink Installation', slug: 'starlink-installation', icon: '🛰️' },
   ]
 
   return (

@@ -97,6 +97,14 @@ export default function Footer() {
                   Network Infrastructure
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/services/starlink-installation"
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  Starlink Installation
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -177,7 +185,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:info@cable-comservices.com"
+                  href="mailto:contact@cable-comservices.com"
                   className="flex items-center gap-2 hover:text-white transition-colors"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -188,7 +196,7 @@ export default function Footer() {
                       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                     />
                   </svg>
-                  info@cable-comservices.com
+                  contact@cable-comservices.com
                 </a>
               </li>
               <li className="pt-2">
