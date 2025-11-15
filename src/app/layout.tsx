@@ -104,7 +104,7 @@ export default function RootLayout({
               image: 'https://cable-comservices.com/images/logo.png',
               '@id': 'https://cable-comservices.com',
               url: 'https://cable-comservices.com',
-              telephone: '+12145551234',
+              telephone: '+14696531275',
               priceRange: '$$-$$$',
               address: {
                 '@type': 'PostalAddress',

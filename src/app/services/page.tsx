@@ -66,8 +66,8 @@ export default function ServicesPage() {
               <Link href="/contact" className="btn btn-primary btn-lg">
                 Get Free Quote
               </Link>
-              <a href="tel:+12145551234" className="btn btn-secondary btn-lg">
-                📞 (214) 555-1234
+              <a href="tel:+14696531275" className="btn btn-secondary btn-lg">
+                📞 (469) 653-1275
               </a>
             </div>
           </div>
@@ -261,8 +261,8 @@ export default function ServicesPage() {
             <Link href="/contact" className="btn btn-secondary btn-lg">
               Get Free Quote
             </Link>
-            <a href="tel:+12145551234" className="btn btn-ghost btn-lg border-2 border-white text-white hover:bg-white hover:text-primary-600">
-              📞 (214) 555-1234
+            <a href="tel:+14696531275" className="btn btn-ghost btn-lg border-2 border-white text-white hover:bg-white hover:text-primary-600">
+              📞 (469) 653-1275
             </a>
           </div>
           <div className="mt-8 text-sm text-gray-300">

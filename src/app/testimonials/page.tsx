@@ -168,10 +168,10 @@ export default function TestimonialsPage() {
               Get Free Quote
             </Link>
             <a
-              href="tel:+12145551234"
+              href="tel:+14696531275"
               className="btn btn-ghost btn-lg border-2 border-white text-white hover:bg-white hover:text-primary-600"
             >
-              📞 (214) 555-1234
+              📞 (469) 653-1275
             </a>
           </div>
         </div>

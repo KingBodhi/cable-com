@@ -125,7 +125,7 @@ export default function PrivacyPage() {
                 <strong>Email:</strong> privacy@cable-comservices.com
               </li>
               <li>
-                <strong>Phone:</strong> (214) 555-1234
+                <strong>Phone:</strong> (469) 653-1275
               </li>
               <li>
                 <strong>Address:</strong> 123 Network Drive, Dallas, TX 75201

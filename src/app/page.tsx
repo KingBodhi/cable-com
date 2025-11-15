@@ -151,7 +151,7 @@ export default function HomePage() {
     } catch (error) {
       console.error('Assessment submission failed', error)
       setAssessmentStatus('idle')
-      setFormError('Something went wrong. Please try again or call (214) 555-1234.')
+      setFormError('Something went wrong. Please try again or call (469) 653-1275.')
     }
   }
 
@@ -725,8 +725,8 @@ export default function HomePage() {
             </div>
 
             <div className="mt-12 text-center">
-              <a href="tel:+12145551234" className="btn btn-emergency btn-lg">
-                24/7 Emergency Service: (214) 555-1234
+              <a href="tel:+14696531275" className="btn btn-emergency btn-lg">
+                24/7 Emergency Service: (469) 653-1275
               </a>
             </div>
           </div>
@@ -859,8 +859,8 @@ export default function HomePage() {
                   </div>
                   <p className="text-sm text-gray-500">
                     Need immediate assistance? Call{' '}
-                    <a href="tel:+12145551234" className="text-primary-600 font-semibold hover:underline">
-                      (214) 555-1234
+                    <a href="tel:+14696531275" className="text-primary-600 font-semibold hover:underline">
+                      (469) 653-1275
                     </a>{' '}
                     and mention your assessment request.
                   </p>
@@ -913,8 +913,8 @@ export default function HomePage() {
                     </p>
                     <p>
                       📞 Prefer to talk? Call{' '}
-                      <a href="tel:+12145551234" className="text-primary-600 font-semibold hover:underline">
-                        (214) 555-1234
+                      <a href="tel:+14696531275" className="text-primary-600 font-semibold hover:underline">
+                        (469) 653-1275
                       </a>
                     </p>
                   </div>
@@ -1010,7 +1010,7 @@ export default function HomePage() {
           </Link>
 
           <p className="mt-8 text-lg text-gray-300">
-            Or call us 24/7: <a href="tel:+12145551234" className="text-white font-bold hover:underline">(214) 555-1234</a>
+            Or call us 24/7: <a href="tel:+14696531275" className="text-white font-bold hover:underline">(469) 653-1275</a>
           </p>
         </div>
       </section>

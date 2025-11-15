@@ -133,7 +133,7 @@ export default function AccessibilityPage() {
                   <strong>Email:</strong> accessibility@cable-comservices.com
                 </li>
                 <li>
-                  <strong>Phone:</strong> (214) 555-1234
+                  <strong>Phone:</strong> (469) 653-1275
                 </li>
                 <li>
                   <strong>Address:</strong> 123 Network Drive, Dallas, TX 75201
@@ -225,7 +225,7 @@ export default function AccessibilityPage() {
               <p className="mb-4">
                 If you need immediate assistance accessing our services or information, please call us directly:
               </p>
-              <p className="text-2xl font-bold text-primary-600 mb-2">(214) 555-1234</p>
+              <p className="text-2xl font-bold text-primary-600 mb-2">(469) 653-1275</p>
               <p className="mb-0">Available Monday-Friday, 7:00 AM - 6:00 PM CT</p>
               <p className="mb-0">24/7 emergency service available</p>
             </div>
