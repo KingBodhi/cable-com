@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { caseStudies, getFeaturedCaseStudies } from '@/data/case-studies'
 
 export const metadata: Metadata = {
@@ -43,9 +44,53 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <section className="py-12 bg-white border-b border-gray-200">
+      {/* Trusted By - Client Logos */}
+      <section className="py-16 bg-white border-b border-gray-200">
         <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="mb-4">Trusted by Elite Organizations</h2>
+            <p className="text-xl text-gray-600">
+              Proven expertise delivering mission-critical network infrastructure for government and enterprise clients
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center mb-12">
+            <div className="flex items-center justify-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
+              <Image
+                src="/images/clients/pentagon.jpg"
+                alt="Pentagon - U.S. Department of Defense"
+                width={200}
+                height={100}
+                className="object-contain grayscale hover:grayscale-0 transition-all max-h-20 w-auto"
+              />
+            </div>
+            <div className="flex items-center justify-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
+              <Image
+                src="/images/clients/staples-center.jpg"
+                alt="Staples Center - Sports & Entertainment"
+                width={200}
+                height={100}
+                className="object-contain grayscale hover:grayscale-0 transition-all max-h-20 w-auto"
+              />
+            </div>
+            <div className="flex items-center justify-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
+              <Image
+                src="/images/clients/faa.jpeg"
+                alt="Federal Aviation Administration"
+                width={200}
+                height={100}
+                className="object-contain grayscale hover:grayscale-0 transition-all max-h-20 w-auto"
+              />
+            </div>
+            <div className="flex items-center justify-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
+              <Image
+                src="/images/clients/golden-west-food.png"
+                alt="Golden West Food Group"
+                width={200}
+                height={100}
+                className="object-contain grayscale hover:grayscale-0 transition-all max-h-20 w-auto"
+              />
+            </div>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold text-primary-600 mb-2">1,000+</div>

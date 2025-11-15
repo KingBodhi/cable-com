@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { services } from '@/data/services'
 import { getFeaturedCaseStudies } from '@/data/case-studies'
 
@@ -574,10 +575,56 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="text-center">
+          <div className="text-center mb-16">
             <Link href="/portfolio" className="btn btn-primary btn-md">
               View All Elite Projects
             </Link>
+          </div>
+
+          {/* Client Logos */}
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Trusted by Elite Organizations</h3>
+              <p className="text-gray-600">Delivering mission-critical infrastructure for government and enterprise</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="flex items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                <Image
+                  src="/images/clients/pentagon.jpg"
+                  alt="Pentagon - U.S. Department of Defense"
+                  width={150}
+                  height={80}
+                  className="object-contain grayscale hover:grayscale-0 transition-all max-h-16 w-auto"
+                />
+              </div>
+              <div className="flex items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                <Image
+                  src="/images/clients/staples-center.jpg"
+                  alt="Staples Center - Sports & Entertainment"
+                  width={150}
+                  height={80}
+                  className="object-contain grayscale hover:grayscale-0 transition-all max-h-16 w-auto"
+                />
+              </div>
+              <div className="flex items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                <Image
+                  src="/images/clients/faa.jpeg"
+                  alt="Federal Aviation Administration"
+                  width={150}
+                  height={80}
+                  className="object-contain grayscale hover:grayscale-0 transition-all max-h-16 w-auto"
+                />
+              </div>
+              <div className="flex items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                <Image
+                  src="/images/clients/golden-west-food.png"
+                  alt="Golden West Food Group"
+                  width={150}
+                  height={80}
+                  className="object-contain grayscale hover:grayscale-0 transition-all max-h-16 w-auto"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>

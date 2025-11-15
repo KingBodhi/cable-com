@@ -2,6 +2,17 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
+
+// Dynamically import Map component (prevents SSR issues with Leaflet)
+const Map = dynamic(() => import('@/components/ui/Map'), {
+  ssr: false,
+  loading: () => (
+    <div className="h-96 bg-gray-200 flex items-center justify-center">
+      <p className="text-gray-600">Loading map...</p>
+    </div>
+  ),
+})
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -86,7 +97,7 @@ export default function ContactPage() {
                 📍
               </div>
               <h3 className="text-xl font-bold mb-2 text-gray-900">Visit Us</h3>
-              <p className="text-gray-700">2101 Joel East Road<br />Dallas, TX 75201</p>
+              <p className="text-gray-700">2101 Joel East Road<br />Fort Worth, TX 76140</p>
               <p className="text-sm text-gray-600 mt-2">By appointment only</p>
             </div>
           </div>
@@ -374,13 +385,32 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Placeholder */}
-      <section className="h-96 bg-gray-200 relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <div className="text-6xl mb-4">📍</div>
-            <p className="text-xl font-semibold text-gray-700">2101 Joel East Road, Dallas, TX 75201</p>
-            <p className="text-gray-600">Interactive map would be embedded here</p>
+      {/* Interactive Map */}
+      <section className="bg-gray-100 py-12">
+        <div className="container-custom">
+          <div className="text-center mb-8">
+            <h2 className="mb-4">Find Us</h2>
+            <p className="text-xl text-gray-600">
+              2101 Joel East Road, Fort Worth, TX 76140
+            </p>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=32.646569,-97.293374"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-600 hover:underline inline-flex items-center gap-2 mt-2"
+            >
+              Get Directions →
+            </a>
+          </div>
+          <div className="max-w-5xl mx-auto shadow-xl rounded-lg overflow-hidden">
+            <Map
+              latitude={32.646569}
+              longitude={-97.293374}
+              zoom={15}
+              height="500px"
+              markerTitle="Cable-Com Services"
+              markerDescription="2101 Joel East Road, Fort Worth, TX 76140"
+            />
           </div>
         </div>
       </section>
