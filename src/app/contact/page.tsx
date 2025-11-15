@@ -86,7 +86,7 @@ export default function ContactPage() {
                 📍
               </div>
               <h3 className="text-xl font-bold mb-2 text-gray-900">Visit Us</h3>
-              <p className="text-gray-700">123 Network Drive<br />Dallas, TX 75201</p>
+              <p className="text-gray-700">2101 Joel East Road<br />Dallas, TX 75201</p>
               <p className="text-sm text-gray-600 mt-2">By appointment only</p>
             </div>
           </div>
@@ -379,7 +379,7 @@ export default function ContactPage() {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <div className="text-6xl mb-4">📍</div>
-            <p className="text-xl font-semibold text-gray-700">123 Network Drive, Dallas, TX 75201</p>
+            <p className="text-xl font-semibold text-gray-700">2101 Joel East Road, Dallas, TX 75201</p>
             <p className="text-gray-600">Interactive map would be embedded here</p>
           </div>
         </div>

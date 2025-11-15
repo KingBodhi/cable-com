@@ -165,7 +165,7 @@ export default function Footer() {
                   />
                 </svg>
                 <span>
-                  123 Network Drive
+                  2101 Joel East Road
                   <br />
                   Dallas, TX 75201
                 </span>

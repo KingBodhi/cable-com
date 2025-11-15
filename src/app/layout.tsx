@@ -136,16 +136,16 @@ export default function RootLayout({
               priceRange: '$$-$$$',
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: '123 Network Drive',
-                addressLocality: 'Dallas',
+                streetAddress: '2101 Joel East Road',
+                addressLocality: 'Fort Worth',
                 addressRegion: 'TX',
-                postalCode: '75201',
+                postalCode: '76140',
                 addressCountry: 'US',
               },
               geo: {
                 '@type': 'GeoCoordinates',
-                latitude: 32.7767,
-                longitude: -96.797,
+                latitude: 32.646569,
+                longitude: -97.293374,
               },
               openingHoursSpecification: [
                 {

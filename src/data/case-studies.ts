@@ -41,7 +41,7 @@ export const caseStudies: CaseStudy[] = [
     projectDuration: '6 months',
     teamSize: 12,
     featured: true,
-    heroImage: '/images/case-studies/pentagon-hero.jpg',
+    heroImage: '/images/case-studies/pentagon.jpg',
     stats: [
       { label: 'Security Clearance', value: 'Top Secret' },
       { label: 'Cable Drops', value: 'Classified' },
@@ -66,11 +66,7 @@ export const caseStudies: CaseStudy[] = [
       company: 'U.S. Department of Defense',
       photo: '/images/testimonials/dod-official.jpg',
     },
-    gallery: [
-      '/images/case-studies/pentagon-1.jpg',
-      '/images/case-studies/pentagon-2.jpg',
-      '/images/case-studies/pentagon-3.jpg',
-    ],
+    gallery: ['/images/case-studies/pentagon.jpg'],
   },
   {
     id: 'staples-center-fiber',
@@ -83,7 +79,7 @@ export const caseStudies: CaseStudy[] = [
     projectDuration: '4 months',
     teamSize: 8,
     featured: true,
-    heroImage: '/images/case-studies/staples-hero.jpg',
+    heroImage: '/images/case-studies/staples-center.jpg',
     stats: [
       { label: 'Venue Capacity', value: '20,000+' },
       { label: 'Fiber Backbone', value: '15km' },
@@ -108,11 +104,7 @@ export const caseStudies: CaseStudy[] = [
       company: 'AEG Facilities',
       photo: '/images/testimonials/aeg-manager.jpg',
     },
-    gallery: [
-      '/images/case-studies/staples-1.jpg',
-      '/images/case-studies/staples-2.jpg',
-      '/images/case-studies/staples-3.jpg',
-    ],
+    gallery: ['/images/case-studies/staples-center.jpg'],
   },
   {
     id: 'faa-multisite',
@@ -125,7 +117,7 @@ export const caseStudies: CaseStudy[] = [
     projectDuration: '8 months',
     teamSize: 15,
     featured: true,
-    heroImage: '/images/case-studies/faa-hero.jpg',
+    heroImage: '/images/case-studies/federal-aviation-commission.jpg',
     stats: [
       { label: 'Sites Completed', value: '12' },
       { label: 'Cable Drops', value: '2,000+' },
@@ -150,11 +142,7 @@ export const caseStudies: CaseStudy[] = [
       company: 'Federal Aviation Administration',
       photo: '/images/testimonials/faa-manager.jpg',
     },
-    gallery: [
-      '/images/case-studies/faa-1.jpg',
-      '/images/case-studies/faa-2.jpg',
-      '/images/case-studies/faa-3.jpg',
-    ],
+    gallery: ['/images/case-studies/federal-aviation-commission.jpg'],
   },
   {
     id: 'golden-west-food',
@@ -167,7 +155,7 @@ export const caseStudies: CaseStudy[] = [
     projectDuration: '5 months',
     teamSize: 10,
     featured: true,
-    heroImage: '/images/case-studies/golden-west-hero.jpg',
+    heroImage: '/images/case-studies/golden-west-food.png',
     stats: [
       { label: 'Network Drops', value: '700' },
       { label: 'IP Cameras', value: '260' },
@@ -193,11 +181,7 @@ export const caseStudies: CaseStudy[] = [
       company: 'Golden West Food Group',
       photo: '/images/testimonials/gw-vp.jpg',
     },
-    gallery: [
-      '/images/case-studies/golden-west-1.jpg',
-      '/images/case-studies/golden-west-2.jpg',
-      '/images/case-studies/golden-west-3.jpg',
-    ],
+    gallery: ['/images/case-studies/golden-west-food.png'],
   },
   {
     id: 'camp-pendleton',

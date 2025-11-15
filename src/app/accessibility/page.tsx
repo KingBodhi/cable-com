@@ -136,7 +136,7 @@ export default function AccessibilityPage() {
                   <strong>Phone:</strong> (469) 653-1275
                 </li>
                 <li>
-                  <strong>Address:</strong> 123 Network Drive, Dallas, TX 75201
+                  <strong>Address:</strong> 2101 Joel East Road, Dallas, TX 75201
                 </li>
               </ul>
             </div>
