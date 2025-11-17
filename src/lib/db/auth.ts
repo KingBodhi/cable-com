@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs'
 import { Pool } from 'pg'
 import Database from 'better-sqlite3'
 import path from 'path'
+import { ensureDatabaseInitialized } from './database'
 
 export interface AdminUser {
   id?: number
@@ -43,14 +44,31 @@ function getSQLiteDB() {
     }
     const dbPath = path.join(dataDir, 'cable-com.db')
     sqliteDb = new Database(dbPath)
+    initializeSQLiteAdminSchema()
   }
   return sqliteDb
+}
+
+function initializeSQLiteAdminSchema() {
+  if (!sqliteDb) return
+
+  sqliteDb.exec(`
+    CREATE TABLE IF NOT EXISTS cablecom_admin_users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      username TEXT UNIQUE NOT NULL,
+      password_hash TEXT NOT NULL,
+      email TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  `)
 }
 
 export async function createAdminUser(username: string, password: string, email: string): Promise<number> {
   const sanitizedUsername = username.trim()
   const sanitizedEmail = email.trim()
   const passwordHash = await bcrypt.hash(password, 10)
+
+  await ensureDatabaseInitialized()
 
   if (isProduction) {
     const pool = getPostgresPool()
@@ -71,6 +89,8 @@ export async function verifyAdminCredentials(username: string, password: string)
   const identifier = username.trim()
   const normalizedIdentifier = identifier.toLowerCase()
   let user: AdminUserRecord | undefined
+
+  await ensureDatabaseInitialized()
 
   if (isProduction) {
     const pool = getPostgresPool()
@@ -102,6 +122,8 @@ export async function verifyAdminCredentials(username: string, password: string)
 }
 
 export async function getAdminUser(username: string): Promise<AdminUser | null> {
+  await ensureDatabaseInitialized()
+
   if (isProduction) {
     const pool = getPostgresPool()
     const result = await pool.query(
@@ -117,6 +139,8 @@ export async function getAdminUser(username: string): Promise<AdminUser | null> 
 }
 
 export async function ensureDefaultAdmin() {
+  await ensureDatabaseInitialized()
+
   const desiredUsername = DEFAULT_ADMIN_USERNAME
   const desiredEmail = DEFAULT_ADMIN_EMAIL
   const normalizedUsername = desiredUsername.trim().toLowerCase()

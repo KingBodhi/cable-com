@@ -24,6 +24,7 @@ export interface Lead {
 const isProduction = process.env.DATABASE_URL !== undefined
 let pool: Pool | null = null
 let sqliteDb: Database.Database | null = null
+let postgresInitialized = false
 
 // PostgreSQL connection
 function getPostgresPool() {
@@ -130,9 +131,19 @@ export async function initializePostgresSchema() {
   `)
 }
 
+export async function ensureDatabaseInitialized() {
+  if (!isProduction || postgresInitialized) {
+    return
+  }
+
+  await initializePostgresSchema()
+  postgresInitialized = true
+}
+
 // Unified API
 export async function createLead(lead: Lead): Promise<number> {
   if (isProduction) {
+    await ensureDatabaseInitialized()
     const pool = getPostgresPool()
     const result = await pool.query(
       `INSERT INTO cablecom_leads (name, email, phone, company, service, project_type, timeline, budget, message, status)
@@ -158,6 +169,7 @@ export async function createLead(lead: Lead): Promise<number> {
 
 export async function getAllLeads(): Promise<Lead[]> {
   if (isProduction) {
+    await ensureDatabaseInitialized()
     const pool = getPostgresPool()
     const result = await pool.query('SELECT * FROM cablecom_leads ORDER BY created_at DESC')
     return result.rows
@@ -170,6 +182,7 @@ export async function getAllLeads(): Promise<Lead[]> {
 
 export async function getLeadById(id: number): Promise<Lead | null> {
   if (isProduction) {
+    await ensureDatabaseInitialized()
     const pool = getPostgresPool()
     const result = await pool.query('SELECT * FROM cablecom_leads WHERE id = $1', [id])
     return result.rows[0] || null
@@ -182,6 +195,7 @@ export async function getLeadById(id: number): Promise<Lead | null> {
 
 export async function updateLeadStatus(id: number, status: string, notes?: string): Promise<void> {
   if (isProduction) {
+    await ensureDatabaseInitialized()
     const pool = getPostgresPool()
     await pool.query(
       'UPDATE cablecom_leads SET status = $1, notes = $2, updated_at = CURRENT_TIMESTAMP WHERE id = $3',
@@ -196,6 +210,7 @@ export async function updateLeadStatus(id: number, status: string, notes?: strin
 
 export async function getLeadStats() {
   if (isProduction) {
+    await ensureDatabaseInitialized()
     const pool = getPostgresPool()
     const [total, newLeads, contacted, qualified, closed] = await Promise.all([
       pool.query('SELECT COUNT(*) as count FROM cablecom_leads'),
