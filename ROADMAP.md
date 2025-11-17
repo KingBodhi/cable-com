@@ -212,12 +212,12 @@
 ## 🔧 Technical Debt & Maintenance
 
 ### Current Known Issues
-- [ ] Remove debug endpoints after confirmation:
-  - `src/app/api/admin/setup`
-  - `src/app/api/debug/env`
+- [x] Remove debug endpoints after confirmation:
+  - `src/app/api/admin/setup` ✅
+  - `src/app/api/debug/env` ✅
 
-- [ ] Remove console.log statements from production
-  - `src/app/api/auth/login/route.ts`
+- [x] Remove console.log statements from production
+  - `src/app/api/auth/login/route.ts` ✅
 
 - [ ] Optional: Delete image backup directories
   - `public/images/projects-backup/`

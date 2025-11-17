@@ -22,8 +22,6 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { username, password } = body
 
-    console.log('🔐 Login attempt:', { username, hasPassword: !!password })
-
     if (!username || !password) {
       return NextResponse.json(
         { error: 'Username and password are required' },
@@ -36,19 +34,15 @@ export async function POST(request: NextRequest) {
       await ensurePostgresInitialized()
     }
     await ensureDefaultAdmin()
-    console.log('✅ Database initialized and admin user ensured')
 
     const user = await verifyAdminCredentials(username, password)
 
     if (!user) {
-      console.log('❌ Credentials verification failed for:', username)
       return NextResponse.json(
         { error: 'Invalid credentials' },
         { status: 401 }
       )
     }
-
-    console.log('✅ Login successful for:', user.username)
 
     // Create session token (simple version - in production, use JWT)
     const sessionToken = Buffer.from(
