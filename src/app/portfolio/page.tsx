@@ -16,7 +16,27 @@ export const metadata: Metadata = {
 
 export default function PortfolioPage() {
   const featured = getFeaturedCaseStudies()
-  const industries = Array.from(new Set(caseStudies.map((cs) => cs.industry)))
+
+  // Industries we serve - comprehensive list
+  const industries = [
+    'Government & Defense',
+    'Healthcare',
+    'Education',
+    'Sports & Entertainment',
+    'Hotel',
+    'Retail',
+    'Roll-Outs',
+    'Small Business',
+    'Large Business',
+    'Warehouse',
+    'Distribution Center',
+    'Cold Storage Facility',
+    'MDF Build Outs',
+    'IDF Installation',
+    'Fiber Installation/Splicing',
+    'Data Centers',
+    'Financial Services',
+  ]
 
   return (
     <div className="min-h-screen">
