@@ -69,7 +69,8 @@ const config: Config = {
         'slide-up': 'slideUp 0.7s ease-out',
         'slide-in-right': 'slideInRight 0.5s ease-out',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'marquee': 'marquee 30s linear infinite',
+        'marquee': 'marquee 25s linear infinite',
+        'marquee-mobile': 'marquee 15s linear infinite',
       },
       keyframes: {
         fadeIn: {

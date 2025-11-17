@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const stats = getLeadStats()
+    const stats = await getLeadStats()
 
     return NextResponse.json({ stats }, { status: 200 })
   } catch (error) {

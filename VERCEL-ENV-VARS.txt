@@ -1,0 +1,16 @@
+# Copy these environment variables to Vercel Dashboard
+# Settings → Environment Variables → Add for Production, Preview, and Development
+
+DATABASE_URL=postgresql://main_dlwc_user:TV4d0qmfVetingvquCIQHpU2adiR0P3n@dpg-d386ckggjchc73cqg6rg-a.oregon-postgres.render.com/main_dlwc
+
+SMTP_HOST=smtp.zoho.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=admin@cable-comservices.com
+SMTP_PASS=khCY5RQtxJeu
+
+ADMIN_SESSION_SECRET=<GENERATE_RANDOM_STRING_HERE>
+
+NOTIFICATION_EMAIL=contact@cable-comservices.com
+
+NEXT_PUBLIC_GA_ID=G-H8GEZ4XM00

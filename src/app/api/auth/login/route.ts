@@ -3,7 +3,7 @@ import { verifyAdminCredentials, ensureDefaultAdmin } from '@/lib/db/auth'
 import { serialize } from 'cookie'
 
 // Ensure default admin exists on server start
-ensureDefaultAdmin()
+ensureDefaultAdmin().catch(console.error)
 
 // POST /api/auth/login - Admin login
 export async function POST(request: NextRequest) {

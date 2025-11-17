@@ -19,7 +19,7 @@ export async function GET(
       return NextResponse.json({ error: 'Invalid lead ID' }, { status: 400 })
     }
 
-    const lead = getLeadById(leadId)
+    const lead = await getLeadById(leadId)
     if (!lead) {
       return NextResponse.json({ error: 'Lead not found' }, { status: 404 })
     }
@@ -71,7 +71,7 @@ export async function PATCH(
       )
     }
 
-    updateLeadStatus(leadId, status, notes)
+    await updateLeadStatus(leadId, status, notes)
 
     return NextResponse.json(
       { success: true, message: 'Lead updated successfully' },

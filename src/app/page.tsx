@@ -487,10 +487,10 @@ export default function HomePage() {
 
       {/* SECTION 2: SERVICE PARTNERS CAROUSEL */}
       <section className="bg-white py-12 border-b border-gray-200 overflow-hidden">
-        <div className="flex gap-16 animate-marquee">
-          {[...Array(3)].map((_, setIndex) => (
-            <div key={setIndex} className="flex gap-16 items-center min-w-max">
-              <div className="h-24 w-48 relative grayscale hover:grayscale-0 transition-all">
+        <div className="flex gap-12 md:gap-16 animate-marquee-mobile md:animate-marquee">
+          {[...Array(4)].map((_, setIndex) => (
+            <div key={setIndex} className="flex gap-12 md:gap-16 items-center min-w-max">
+              <div className="h-20 w-40 md:h-24 md:w-48 relative grayscale hover:grayscale-0 transition-all">
                 <Image
                   src="/images/services/service-6.png"
                   alt="Service Partner"
@@ -498,7 +498,7 @@ export default function HomePage() {
                   className="object-contain"
                 />
               </div>
-              <div className="h-24 w-48 relative grayscale hover:grayscale-0 transition-all">
+              <div className="h-20 w-40 md:h-24 md:w-48 relative grayscale hover:grayscale-0 transition-all">
                 <Image
                   src="/images/services/service-7.png"
                   alt="Service Partner"
@@ -506,7 +506,7 @@ export default function HomePage() {
                   className="object-contain"
                 />
               </div>
-              <div className="h-24 w-48 relative grayscale hover:grayscale-0 transition-all">
+              <div className="h-20 w-40 md:h-24 md:w-48 relative grayscale hover:grayscale-0 transition-all">
                 <Image
                   src="/images/services/service-8.png"
                   alt="Service Partner"
@@ -514,7 +514,7 @@ export default function HomePage() {
                   className="object-contain"
                 />
               </div>
-              <div className="h-24 w-48 relative grayscale hover:grayscale-0 transition-all">
+              <div className="h-20 w-40 md:h-24 md:w-48 relative grayscale hover:grayscale-0 transition-all">
                 <Image
                   src="/images/services/service-9.png"
                   alt="Service Partner"
@@ -522,7 +522,7 @@ export default function HomePage() {
                   className="object-contain"
                 />
               </div>
-              <div className="h-24 w-48 relative grayscale hover:grayscale-0 transition-all">
+              <div className="h-20 w-40 md:h-24 md:w-48 relative grayscale hover:grayscale-0 transition-all">
                 <Image
                   src="/images/services/service-10.png"
                   alt="Service Partner"
@@ -530,7 +530,7 @@ export default function HomePage() {
                   className="object-contain"
                 />
               </div>
-              <div className="h-24 w-48 relative grayscale hover:grayscale-0 transition-all">
+              <div className="h-20 w-40 md:h-24 md:w-48 relative grayscale hover:grayscale-0 transition-all">
                 <Image
                   src="/images/services/service-11.png"
                   alt="Service Partner"

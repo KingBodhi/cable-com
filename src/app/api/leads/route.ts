@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
       message: body.message,
     }
 
-    const leadId = createLead(lead)
+    const leadId = await createLead(lead)
     lead.id = leadId
 
     // Send email notification (async, don't wait for it)
@@ -79,7 +79,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const leads = getAllLeads()
+    const leads = await getAllLeads()
 
     return NextResponse.json({ leads }, { status: 200 })
   } catch (error) {
