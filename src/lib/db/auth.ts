@@ -11,6 +11,12 @@ export interface AdminUser {
   created_at?: string
 }
 
+type AdminUserRecord = AdminUser & { password_hash?: string }
+
+const DEFAULT_ADMIN_USERNAME = process.env.ADMIN_DEFAULT_USERNAME || 'ryan'
+const DEFAULT_ADMIN_EMAIL = process.env.ADMIN_DEFAULT_EMAIL || 'Ryan@Cable-ComServices.com'
+const DEFAULT_ADMIN_PASSWORD = process.env.ADMIN_DEFAULT_PASSWORD || 'SecurePassword22!'
+
 // Determine which database to use
 const isProduction = process.env.DATABASE_URL !== undefined
 
@@ -42,37 +48,43 @@ function getSQLiteDB() {
 }
 
 export async function createAdminUser(username: string, password: string, email: string): Promise<number> {
+  const sanitizedUsername = username.trim()
+  const sanitizedEmail = email.trim()
   const passwordHash = await bcrypt.hash(password, 10)
 
   if (isProduction) {
     const pool = getPostgresPool()
     const result = await pool.query(
       'INSERT INTO cablecom_admin_users (username, password_hash, email) VALUES ($1, $2, $3) RETURNING id',
-      [username, passwordHash, email]
+      [sanitizedUsername, passwordHash, sanitizedEmail]
     )
     return result.rows[0].id
   } else {
     const db = getSQLiteDB()
     const stmt = db.prepare('INSERT INTO cablecom_admin_users (username, password_hash, email) VALUES (?, ?, ?)')
-    const result = stmt.run(username, passwordHash, email)
+    const result = stmt.run(sanitizedUsername, passwordHash, sanitizedEmail)
     return result.lastInsertRowid as number
   }
 }
 
 export async function verifyAdminCredentials(username: string, password: string): Promise<AdminUser | null> {
-  let user: AdminUser | undefined
+  const identifier = username.trim()
+  const normalizedIdentifier = identifier.toLowerCase()
+  let user: AdminUserRecord | undefined
 
   if (isProduction) {
     const pool = getPostgresPool()
     const result = await pool.query(
-      'SELECT * FROM cablecom_admin_users WHERE username = $1 OR email = $1',
-      [username]
+      'SELECT * FROM cablecom_admin_users WHERE LOWER(username) = $1 OR LOWER(email) = $1 LIMIT 1',
+      [normalizedIdentifier]
     )
     user = result.rows[0]
   } else {
     const db = getSQLiteDB()
-    const stmt = db.prepare('SELECT * FROM cablecom_admin_users WHERE username = ? OR email = ?')
-    user = stmt.get(username, username) as AdminUser | undefined
+    const stmt = db.prepare(
+      'SELECT * FROM cablecom_admin_users WHERE LOWER(username) = ? OR LOWER(email) = ? LIMIT 1'
+    )
+    user = stmt.get(normalizedIdentifier, normalizedIdentifier) as AdminUserRecord | undefined
   }
 
   if (!user || !user.password_hash) {
@@ -105,28 +117,59 @@ export async function getAdminUser(username: string): Promise<AdminUser | null> 
 }
 
 export async function ensureDefaultAdmin() {
-  let count = 0
+  const desiredUsername = DEFAULT_ADMIN_USERNAME
+  const desiredEmail = DEFAULT_ADMIN_EMAIL
+  const normalizedUsername = desiredUsername.trim().toLowerCase()
+  const normalizedEmail = desiredEmail.trim().toLowerCase()
+
+  let existingUser: AdminUserRecord | undefined
 
   if (isProduction) {
     const pool = getPostgresPool()
-    const result = await pool.query('SELECT COUNT(*) as count FROM cablecom_admin_users')
-    count = parseInt(result.rows[0].count)
+    const result = await pool.query(
+      'SELECT * FROM cablecom_admin_users WHERE LOWER(username) = $1 OR LOWER(email) = $2 LIMIT 1',
+      [normalizedUsername, normalizedEmail]
+    )
+    existingUser = result.rows[0]
   } else {
     const db = getSQLiteDB()
-    const stmt = db.prepare('SELECT COUNT(*) as count FROM cablecom_admin_users')
-    const result = stmt.get() as { count: number }
-    count = result.count
+    const stmt = db.prepare(
+      'SELECT * FROM cablecom_admin_users WHERE LOWER(username) = ? OR LOWER(email) = ? LIMIT 1'
+    )
+    existingUser = stmt.get(normalizedUsername, normalizedEmail) as AdminUserRecord | undefined
   }
 
-  // If no admin users exist, create a default one
-  if (count === 0) {
-    const defaultUsername = 'ryan'
-    const defaultPassword = 'SecurePassword22!'
-    const defaultEmail = 'ryan@cable-comservices.com'
+  if (!existingUser) {
+    await createAdminUser(desiredUsername, DEFAULT_ADMIN_PASSWORD, desiredEmail)
+    console.log('✓ Default admin user created')
+    console.log(`  Email: ${desiredEmail}`)
+    console.log(`  Username: ${desiredUsername}`)
+    return
+  }
 
-    await createAdminUser(defaultUsername, defaultPassword, defaultEmail)
-    console.log('✓ Admin user created')
-    console.log('  Email: ryan@cable-comservices.com')
-    console.log('  Username: ryan')
+  const needsUsernameUpdate = existingUser.username !== desiredUsername
+  const needsEmailUpdate = existingUser.email !== desiredEmail
+  const passwordMatches = existingUser.password_hash
+    ? await bcrypt.compare(DEFAULT_ADMIN_PASSWORD, existingUser.password_hash)
+    : false
+
+  if (needsUsernameUpdate || needsEmailUpdate || !passwordMatches) {
+    const passwordHash = passwordMatches && existingUser.password_hash
+      ? existingUser.password_hash
+      : await bcrypt.hash(DEFAULT_ADMIN_PASSWORD, 10)
+
+    if (isProduction) {
+      const pool = getPostgresPool()
+      await pool.query(
+        'UPDATE cablecom_admin_users SET username = $1, email = $2, password_hash = $3 WHERE id = $4',
+        [desiredUsername, desiredEmail, passwordHash, existingUser.id]
+      )
+    } else {
+      const db = getSQLiteDB()
+      const stmt = db.prepare('UPDATE cablecom_admin_users SET username = ?, email = ?, password_hash = ? WHERE id = ?')
+      stmt.run(desiredUsername, desiredEmail, passwordHash, existingUser.id)
+    }
+
+    console.log('✓ Default admin credentials synchronized')
   }
 }

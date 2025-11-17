@@ -31,6 +31,18 @@ type AssessmentFormData = {
   contactPhone: string
 }
 
+type AssessmentLeadPayload = {
+  name: string
+  email: string
+  phone: string
+  company?: string
+  service: string
+  projectType?: string
+  timeline?: string
+  budget?: string
+  message: string
+}
+
 const assessmentSteps = [
   {
     title: 'What type of project?',
@@ -152,13 +164,76 @@ export default function HomePage() {
     setFormError(null)
   }
 
-  const simulateSubmit = () => new Promise((resolve) => setTimeout(resolve, 1200))
+  const buildAssessmentLeadPayload = (): AssessmentLeadPayload => {
+    const sanitizedName = assessmentData.contactName.trim()
+    const sanitizedEmail = assessmentData.contactEmail.trim()
+    const sanitizedPhone = assessmentData.contactPhone.trim()
+    const sanitizedCompany = assessmentData.company.trim()
+
+    const serviceLabel = assessmentData.projectType
+      ? `${assessmentData.projectType} Assessment`
+      : 'Network Infrastructure Assessment'
+
+    const details: string[] = [
+      `Facility Type: ${assessmentData.facilityType || 'Not specified'}`,
+      `Estimated Drop Count: ${assessmentData.dropCount || 'Not provided'}`,
+      `Timeline: ${assessmentData.timeline || 'Not provided'}`,
+      `Compliance: ${assessmentData.compliance || 'Not provided'}`,
+    ]
+
+    if (assessmentData.priorities.length) {
+      details.push(`Top Priorities: ${assessmentData.priorities.join(', ')}`)
+    }
+
+    if (assessmentData.notes.trim()) {
+      details.push(`Notes: ${assessmentData.notes.trim()}`)
+    }
+
+    details.push(
+      `Submitted via Homepage Assessment on ${new Date().toLocaleString('en-US', {
+        hour12: true,
+      })}`
+    )
+
+    return {
+      name: sanitizedName,
+      email: sanitizedEmail,
+      phone: sanitizedPhone,
+      company: sanitizedCompany || undefined,
+      service: serviceLabel,
+      projectType: assessmentData.projectType || undefined,
+      timeline: assessmentData.timeline || undefined,
+      budget: assessmentData.dropCount ? `${assessmentData.dropCount} drops` : undefined,
+      message: details.join('\n'),
+    }
+  }
 
   const handleSubmit = async () => {
+    const payload = buildAssessmentLeadPayload()
+
+    if (!payload.name || !payload.email || !payload.phone) {
+      setFormError('Please complete all contact details before submitting.')
+      return
+    }
+
     setAssessmentStatus('submitting')
     setFormError(null)
+
     try {
-      await simulateSubmit()
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+
+      const data = await response.json().catch(() => null)
+
+      if (!response.ok) {
+        setAssessmentStatus('idle')
+        setFormError((data && data.error) || 'Unable to submit your assessment. Please try again.')
+        return
+      }
+
       setAssessmentStatus('success')
     } catch (error) {
       console.error('Assessment submission failed', error)

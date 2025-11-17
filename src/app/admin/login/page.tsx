@@ -117,12 +117,6 @@ export default function AdminLoginPage() {
           </div>
         </div>
 
-        {/* Login Credentials Info */}
-        <div className="mt-6 p-4 bg-primary-50 border border-primary-200 rounded-lg">
-          <p className="text-sm text-primary-800 font-semibold mb-2">Admin Login:</p>
-          <p className="text-xs text-primary-700">Email: <code>ryan@cable-comservices.com</code></p>
-          <p className="text-xs text-primary-700">Username: <code>ryan</code></p>
-        </div>
       </div>
     </div>
   )
