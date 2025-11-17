@@ -485,50 +485,58 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 2: TRUST BAR */}
-      <section className="bg-white py-8 border-b border-gray-200 overflow-hidden">
-        <div className="flex gap-12 animate-marquee">
-          {[...Array(2)].map((_, setIndex) => (
-            <div key={setIndex} className="flex gap-12 items-center min-w-max">
-              <div className="flex items-center gap-3">
-                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">🏛️</span>
-                </div>
-                <span className="font-semibold text-gray-700">BICSI Certified</span>
+      {/* SECTION 2: SERVICE PARTNERS CAROUSEL */}
+      <section className="bg-white py-12 border-b border-gray-200 overflow-hidden">
+        <div className="flex gap-16 animate-marquee">
+          {[...Array(3)].map((_, setIndex) => (
+            <div key={setIndex} className="flex gap-16 items-center min-w-max">
+              <div className="h-24 w-48 relative grayscale hover:grayscale-0 transition-all">
+                <Image
+                  src="/images/services/service-6.png"
+                  alt="Service Partner"
+                  fill
+                  className="object-contain"
+                />
               </div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">🛡️</span>
-                </div>
-                <span className="font-semibold text-gray-700">Pentagon Projects</span>
+              <div className="h-24 w-48 relative grayscale hover:grayscale-0 transition-all">
+                <Image
+                  src="/images/services/service-7.png"
+                  alt="Service Partner"
+                  fill
+                  className="object-contain"
+                />
               </div>
-
-              <div className="w-24 h-16 relative grayscale hover:grayscale-0 transition-all">
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center rounded">
-                  <span className="text-xs text-gray-600">Client Logo</span>
-                </div>
+              <div className="h-24 w-48 relative grayscale hover:grayscale-0 transition-all">
+                <Image
+                  src="/images/services/service-8.png"
+                  alt="Service Partner"
+                  fill
+                  className="object-contain"
+                />
               </div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">🏆</span>
-                </div>
-                <span className="font-semibold text-gray-700">1,000+ Projects</span>
+              <div className="h-24 w-48 relative grayscale hover:grayscale-0 transition-all">
+                <Image
+                  src="/images/services/service-9.png"
+                  alt="Service Partner"
+                  fill
+                  className="object-contain"
+                />
               </div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">⚡</span>
-                </div>
-                <span className="font-semibold text-gray-700">24/7 Support</span>
+              <div className="h-24 w-48 relative grayscale hover:grayscale-0 transition-all">
+                <Image
+                  src="/images/services/service-10.png"
+                  alt="Service Partner"
+                  fill
+                  className="object-contain"
+                />
               </div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">✓</span>
-                </div>
-                <span className="font-semibold text-gray-700">Licensed & Insured</span>
+              <div className="h-24 w-48 relative grayscale hover:grayscale-0 transition-all">
+                <Image
+                  src="/images/services/service-11.png"
+                  alt="Service Partner"
+                  fill
+                  className="object-contain"
+                />
               </div>
             </div>
           ))}
@@ -670,13 +678,13 @@ export default function HomePage() {
         <div className="container-custom">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Why Dallas Businesses Choose <span className="text-texas-gold">Cable-Com</span>
+              Why Dallas Businesses Choose <span className="text-white">Cable-Com</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white/10 backdrop-blur rounded-xl p-8 hover:bg-white/15 transition-all">
-              <div className="text-6xl text-texas-gold mb-4 font-bold">#1</div>
+              <div className="text-6xl text-white mb-4 font-bold">#1</div>
               <h3 className="text-2xl font-bold mb-3">BICSI Certified Excellence</h3>
               <p className="text-gray-300">
                 Our technicians hold industry gold-standard BICSI certifications, ensuring every installation meets and exceeds TIA/EIA standards. Pentagon-level quality on every project.
@@ -684,7 +692,7 @@ export default function HomePage() {
             </div>
 
             <div className="bg-white/10 backdrop-blur rounded-xl p-8 hover:bg-white/15 transition-all">
-              <div className="text-6xl text-texas-gold mb-4 font-bold">#2</div>
+              <div className="text-6xl text-white mb-4 font-bold">#2</div>
               <h3 className="text-2xl font-bold mb-3">Federal Experience</h3>
               <p className="text-gray-300">
                 Trusted by Pentagon, FAA, and military installations. We bring government-grade security protocols and quality standards to every commercial project.
@@ -692,7 +700,7 @@ export default function HomePage() {
             </div>
 
             <div className="bg-white/10 backdrop-blur rounded-xl p-8 hover:bg-white/15 transition-all">
-              <div className="text-6xl text-texas-gold mb-4 font-bold">#3</div>
+              <div className="text-6xl text-white mb-4 font-bold">#3</div>
               <h3 className="text-2xl font-bold mb-3">1,000+ Successful Projects</h3>
               <p className="text-gray-300">
                 Proven track record across healthcare, education, manufacturing, government, and enterprise sectors. From 10-drop offices to 2,000+ drop campuses.
@@ -700,7 +708,7 @@ export default function HomePage() {
             </div>
 
             <div className="bg-white/10 backdrop-blur rounded-xl p-8 hover:bg-white/15 transition-all">
-              <div className="text-6xl text-texas-gold mb-4 font-bold">#4</div>
+              <div className="text-6xl text-white mb-4 font-bold">#4</div>
               <h3 className="text-2xl font-bold mb-3">5-Minute Response</h3>
               <p className="text-gray-300">
                 Live chat, phone, email — we respond in minutes, not hours. 24/7 emergency service available. Your questions answered, your projects started fast.
@@ -1045,7 +1053,7 @@ export default function HomePage() {
 
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-12 py-5 text-xl font-bold bg-texas-gold text-primary-900 rounded-lg hover:bg-yellow-500 transition-all hover:scale-105 shadow-2xl"
+            className="inline-flex items-center justify-center px-12 py-5 text-xl font-bold bg-white text-primary-900 rounded-lg hover:bg-gray-100 transition-all hover:scale-105 shadow-2xl"
           >
             Get Free Quote Now
           </Link>

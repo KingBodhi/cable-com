@@ -1,0 +1,15 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Green curved swoosh similar to the image provided -->
+  <path d="M 180 50 Q 120 30, 80 60 Q 40 90, 30 140 Q 25 165, 40 180 Q 55 195, 80 185 Q 105 175, 130 155 Q 155 135, 170 110 Q 185 85, 185 60 Q 185 45, 175 45 Q 165 45, 160 55 Z"
+        fill="#22C55E"
+        opacity="1"/>
+  <path d="M 170 60 Q 155 40, 90 70 Q 50 90, 35 135 Q 28 160, 45 175 Q 55 183, 70 180 Z"
+        fill="url(#greenGradient)"
+        opacity="0.9"/>
+  <defs>
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ADE80;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22C55E;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

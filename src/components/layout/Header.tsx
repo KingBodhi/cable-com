@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 export default function Header() {
@@ -49,8 +50,14 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 bg-gradient-cta rounded-lg flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform">
-              CC
+            <div className="w-12 h-12 relative group-hover:scale-110 transition-transform">
+              <Image
+                src="/images/cable-com-logo-green.png"
+                alt="Cable-Com Services"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
             <div>
               <div className="font-bold text-xl text-gray-900 leading-tight">Cable-Com Services</div>

@@ -1,1 +1,11 @@
-{"version":4,"routes":{"/services/structured-cabling":{},"/services/fiber-optic":{},"/services/data-center":{},"/services/security-systems":{},"/services/voice-telephony":{},"/services/network-infrastructure":{},"/services/starlink-installation":{}},"dynamicRoutes":{"/services/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/services/[slug]","routeRegex":"^\\/services\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"336059b8c602077c1418bfd1976fd8f8","previewModeSigningKey":"e5a51fd3e2e43de1f2c26331c58dbe462c5cd06b111423b15a5df089bb5e9a31","previewModeEncryptionKey":"d6118a4d8a7d50a22871ae978a64e0c6e6c93b54c6a943336bfeb95ca65fdb45"}}
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "7be34bc6bbc6b39c6563af30825dfcd4",
+    "previewModeSigningKey": "dea912b595c89b7436c52036ba07f5a862d2839256b9a6cdb04956135c213cd0",
+    "previewModeEncryptionKey": "022a373cfe8293bb13158a5d0574059f0eea81bf3249a0fce5b52aed3bcce29b"
+  }
+}

@@ -28,6 +28,8 @@ export default function ContactPage() {
   })
 
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -36,25 +38,52 @@ export default function ContactPage() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In production, this would send to your backend/CRM
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        service: '',
-        projectType: '',
-        timeline: '',
-        budget: '',
-        message: '',
+    setLoading(true)
+    setError('')
+
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
-    }, 3000)
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        setError(data.error || 'Failed to submit form. Please try again.')
+        setLoading(false)
+        return
+      }
+
+      // Success
+      setSubmitted(true)
+      setLoading(false)
+
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false)
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          projectType: '',
+          timeline: '',
+          budget: '',
+          message: '',
+        })
+      }, 5000)
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setError('An error occurred. Please try again or call us directly.')
+      setLoading(false)
+    }
   }
 
   return (
@@ -119,7 +148,14 @@ export default function ContactPage() {
               {submitted && (
                 <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
                   <p className="font-semibold">Thank you for your inquiry!</p>
-                  <p className="text-sm">We'll get back to you within 24 hours.</p>
+                  <p className="text-sm">We'll get back to you within 24 hours. Check your email for confirmation.</p>
+                </div>
+              )}
+
+              {error && (
+                <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                  <p className="font-semibold">Error</p>
+                  <p className="text-sm">{error}</p>
                 </div>
               )}
 
@@ -208,6 +244,7 @@ export default function ContactPage() {
                     <option value="security-systems">Security Systems</option>
                     <option value="voice-telephony">Voice & Telephony</option>
                     <option value="network-infrastructure">Network Infrastructure</option>
+                    <option value="starlink-installation">Starlink Installation</option>
                     <option value="consultation">General Consultation</option>
                   </select>
                 </div>
@@ -289,8 +326,12 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-lg w-full">
-                  Get Free Quote
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="btn btn-primary btn-lg w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {loading ? 'Submitting...' : 'Get Free Quote'}
                 </button>
 
                 <p className="text-sm text-gray-600 text-center">
