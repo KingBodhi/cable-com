@@ -38,7 +38,11 @@ let sqliteDb: Database.Database | null = null
 function getSQLiteDB() {
   if (!sqliteDb) {
     const fs = require('fs')
-    const dataDir = path.join(process.cwd(), 'data')
+
+    // Use /tmp in serverless environments (Vercel), otherwise use ./data
+    const isServerless = process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME
+    const dataDir = isServerless ? '/tmp' : path.join(process.cwd(), 'data')
+
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir, { recursive: true })
     }

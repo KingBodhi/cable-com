@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { ensureDefaultAdmin, getAdminUser } from '@/lib/db/auth'
+import { ensurePostgresInitialized } from '@/lib/init-db'
 
 // GET /api/admin/setup - Manually trigger admin user creation
 // Remove this endpoint after confirming admin user is created
@@ -11,6 +12,12 @@ export async function GET(request: NextRequest) {
     console.log('  - ADMIN_DEFAULT_USERNAME:', process.env.ADMIN_DEFAULT_USERNAME || 'ryan (default)')
     console.log('  - ADMIN_DEFAULT_EMAIL:', process.env.ADMIN_DEFAULT_EMAIL || 'Ryan@Cable-ComServices.com (default)')
     console.log('  - ADMIN_DEFAULT_PASSWORD:', process.env.ADMIN_DEFAULT_PASSWORD ? 'SET' : 'SecurePassword22! (default)')
+
+    // Initialize PostgreSQL schema first if using PostgreSQL
+    if (process.env.DATABASE_URL) {
+      console.log('🔧 Ensuring PostgreSQL schema exists...')
+      await ensurePostgresInitialized()
+    }
 
     await ensureDefaultAdmin()
 

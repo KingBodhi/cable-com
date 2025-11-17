@@ -1,9 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { verifyAdminCredentials, ensureDefaultAdmin } from '@/lib/db/auth'
+import { ensurePostgresInitialized } from '@/lib/init-db'
 import { serialize } from 'cookie'
 
-// Ensure default admin exists on server start
-ensureDefaultAdmin().catch(console.error)
+// Ensure database and default admin exists on server start
+async function initializeOnStartup() {
+  try {
+    if (process.env.DATABASE_URL) {
+      await ensurePostgresInitialized()
+    }
+    await ensureDefaultAdmin()
+  } catch (error) {
+    console.error('Startup initialization error:', error)
+  }
+}
+initializeOnStartup()
 
 // POST /api/auth/login - Admin login
 export async function POST(request: NextRequest) {
@@ -20,9 +31,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Ensure admin user exists before verifying
+    // Ensure database and admin user exists before verifying
+    if (process.env.DATABASE_URL) {
+      await ensurePostgresInitialized()
+    }
     await ensureDefaultAdmin()
-    console.log('✅ Admin user ensured')
+    console.log('✅ Database initialized and admin user ensured')
 
     const user = await verifyAdminCredentials(username, password)
 
