@@ -4,7 +4,7 @@ import { getLeadById, updateLeadStatus } from '@/lib/db/database'
 // GET /api/leads/[id] - Get a specific lead
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Check authentication
@@ -13,7 +13,8 @@ export async function GET(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const leadId = parseInt(params.id)
+    const { id } = await params
+    const leadId = parseInt(id)
     if (isNaN(leadId)) {
       return NextResponse.json({ error: 'Invalid lead ID' }, { status: 400 })
     }
@@ -36,7 +37,7 @@ export async function GET(
 // PATCH /api/leads/[id] - Update lead status
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Check authentication
@@ -45,7 +46,8 @@ export async function PATCH(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const leadId = parseInt(params.id)
+    const { id } = await params
+    const leadId = parseInt(id)
     if (isNaN(leadId)) {
       return NextResponse.json({ error: 'Invalid lead ID' }, { status: 400 })
     }
