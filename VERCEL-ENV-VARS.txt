@@ -9,7 +9,12 @@ SMTP_SECURE=false
 SMTP_USER=admin@cable-comservices.com
 SMTP_PASS=khCY5RQtxJeu
 
-ADMIN_SESSION_SECRET=<GENERATE_RANDOM_STRING_HERE>
+ADMIN_SESSION_SECRET=17dafae691830d5395698d29b2c460b41e0c8395bb559b346e692dde382915cf
+
+# Optional: Override default admin credentials (defaults shown below)
+# ADMIN_DEFAULT_USERNAME=ryan
+# ADMIN_DEFAULT_EMAIL=Ryan@Cable-ComServices.com
+# ADMIN_DEFAULT_PASSWORD=SecurePassword22!
 
 NOTIFICATION_EMAIL=contact@cable-comservices.com
 

@@ -76,10 +76,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code',
-  },
+  // Add Google Search Console verification code after setting up Google Search Console
+  // verification: {
+  //   google: 'your-google-verification-code-here',
+  // },
 }
 
 export default function RootLayout({
@@ -162,9 +162,9 @@ export default function RootLayout({
                 },
               ],
               sameAs: [
-                'https://www.facebook.com/cablecomservicesdallas',
-                'https://www.linkedin.com/company/cable-com-services-dallas',
-                'https://twitter.com/cablecomdallas',
+                'https://www.facebook.com/cablecomservices',
+                'https://www.instagram.com/cablecomservices',
+                'https://www.linkedin.com/company/cable-com-services',
               ],
               aggregateRating: {
                 '@type': 'AggregateRating',

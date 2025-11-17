@@ -173,7 +173,7 @@ export default function Footer() {
                 <span>
                   2101 Joel East Road
                   <br />
-                  Dallas, TX 75201
+                  Fort Worth, TX 76140
                 </span>
               </li>
               <li>

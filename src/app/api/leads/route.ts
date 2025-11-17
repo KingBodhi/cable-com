@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createLead, getAllLeads, Lead } from '@/lib/db/database'
 import { sendLeadNotification } from '@/lib/email'
-import { trackFormSubmit } from '@/lib/analytics'
 
 // POST /api/leads - Create a new lead
 export async function POST(request: NextRequest) {
@@ -40,11 +39,6 @@ export async function POST(request: NextRequest) {
       console.error('Failed to send email notification:', error)
       // Don't fail the request if email fails
     })
-
-    // Track in Google Analytics
-    if (typeof window !== 'undefined') {
-      trackFormSubmit('contact-form')
-    }
 
     return NextResponse.json(
       {
