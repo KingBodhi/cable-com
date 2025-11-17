@@ -52,10 +52,10 @@ export const metadata: Metadata = {
     siteName: 'Cable-Com Services Dallas',
     images: [
       {
-        url: '/images/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Cable-Com Services - Pentagon-Grade Network Cabling',
+        url: '/images/og/cable-com-og.png',
+        width: 1920,
+        height: 1080,
+        alt: 'Cable-Com Services Dallas skyline with neon green logo',
       },
     ],
   },
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Cable-Com Services Dallas | Pentagon-Grade Network Cabling',
     description: 'BICSI-certified network cabling for Dallas-Fort Worth businesses.',
-    images: ['/images/twitter-image.jpg'],
+    images: ['/images/og/cable-com-og.png'],
   },
   robots: {
     index: true,
@@ -129,7 +129,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'LocalBusiness',
               name: 'Cable-Com Services Dallas',
-              image: 'https://cable-comservices.com/images/logo.png',
+              image: 'https://cable-comservices.com/images/og/cable-com-og.png',
               '@id': 'https://cable-comservices.com',
               url: 'https://cable-comservices.com',
               telephone: '+14696531275',
