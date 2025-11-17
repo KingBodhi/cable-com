@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{\"app/contact/page.tsx -> @/components/ui/Map\":{\"id\":\"app/contact/page.tsx -> @/components/ui/Map\",\"files\":[\"static/css/_app-pages-browser_src_components_ui_Map_tsx.css\",\"static/chunks/_app-pages-browser_src_components_ui_Map_tsx.js\"]},\"app/page.tsx -> @/components/ui/Map\":{\"id\":\"app/page.tsx -> @/components/ui/Map\",\"files\":[\"static/css/_app-pages-browser_src_components_ui_Map_tsx.css\",\"static/chunks/_app-pages-browser_src_components_ui_Map_tsx.js\"]}}"
+self.__REACT_LOADABLE_MANIFEST="{}"
