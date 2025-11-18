@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { caseStudies, getFeaturedCaseStudies } from '@/data/case-studies'
+import FacebookPostsGallery from '@/components/FacebookPostsGallery'
 
 export const metadata: Metadata = {
   title: 'Portfolio - Elite Network Infrastructure Projects | Cable-Com Services Dallas',
@@ -234,109 +235,7 @@ export default function PortfolioPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Fiber Patch Panel */}
-            <div className="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
-              <Image
-                src="/images/installations/fiber-patch-panel.jpg"
-                alt="Professional fiber optic patch panel installation with organized DIGI connections"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent group-hover:from-gray-900/80 group-hover:via-gray-900/30 transition-all duration-700" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-xl font-bold drop-shadow-lg mb-2">Fiber Optic Infrastructure</h3>
-                <p className="text-gray-200 text-sm drop-shadow-md">
-                  High-density fiber patch panels with professional labeling and cable management
-                </p>
-              </div>
-            </div>
-
-            {/* Data Center Environment */}
-            <div className="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
-              <Image
-                src="/images/installations/data-center-environment.jpg"
-                alt="Industrial data center environment with structured cabling and security systems"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent group-hover:from-gray-900/80 group-hover:via-gray-900/30 transition-all duration-700" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-xl font-bold drop-shadow-lg mb-2">Data Center Solutions</h3>
-                <p className="text-gray-200 text-sm drop-shadow-md">
-                  Secure industrial facilities with integrated network and security infrastructure
-                </p>
-              </div>
-            </div>
-
-            {/* Industrial Facility */}
-            <div className="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
-              <Image
-                src="/images/installations/industrial-facility-1.jpg"
-                alt="Industrial warehouse with network infrastructure and cable management systems"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent group-hover:from-gray-900/80 group-hover:via-gray-900/30 transition-all duration-700" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-xl font-bold drop-shadow-lg mb-2">Industrial Infrastructure</h3>
-                <p className="text-gray-200 text-sm drop-shadow-md">
-                  Large-scale warehouse and manufacturing facility network installations
-                </p>
-              </div>
-            </div>
-
-            {/* Ceiling Cable Installation */}
-            <div className="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
-              <Image
-                src="/images/installations/ceiling-cable-install.jpg"
-                alt="Professional cable routing and management in industrial ceiling infrastructure"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent group-hover:from-gray-900/80 group-hover:via-gray-900/30 transition-all duration-700" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-xl font-bold drop-shadow-lg mb-2">Overhead Cable Management</h3>
-                <p className="text-gray-200 text-sm drop-shadow-md">
-                  Professional cable routing and management in industrial environments
-                </p>
-              </div>
-            </div>
-
-            {/* Cabling Materials */}
-            <div className="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
-              <Image
-                src="/images/installations/cabling-materials.jpg"
-                alt="Professional cable bundling and materials organization for network installations"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent group-hover:from-gray-900/80 group-hover:via-gray-900/30 transition-all duration-700" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-xl font-bold drop-shadow-lg mb-2">Enterprise-Grade Materials</h3>
-                <p className="text-gray-200 text-sm drop-shadow-md">
-                  Professional cable management and organized material handling for large installations
-                </p>
-              </div>
-            </div>
-
-            {/* CTA Card */}
-            <div className="relative overflow-hidden rounded-xl shadow-lg aspect-square bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center p-8 group hover:from-primary-500 hover:to-primary-700 transition-all duration-500">
-              <div className="text-center text-white">
-                <div className="text-5xl mb-4">📸</div>
-                <h3 className="text-2xl font-bold mb-4 drop-shadow-lg">See Your Project Here</h3>
-                <p className="text-gray-100 mb-6 drop-shadow-md">
-                  Ready to start your network infrastructure project?
-                </p>
-                <Link
-                  href="/contact"
-                  className="inline-block bg-white text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-                >
-                  Get Free Quote
-                </Link>
-              </div>
-            </div>
-          </div>
+          <FacebookPostsGallery />
         </div>
       </section>
 

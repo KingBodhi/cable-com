@@ -162,7 +162,7 @@ export default function RootLayout({
                 },
               ],
               sameAs: [
-                'https://www.facebook.com/cablecomservices',
+                'https://www.facebook.com/profile.php?id=61575613031791',
                 'https://www.instagram.com/cablecomservices',
                 'https://www.linkedin.com/company/cable-com-services',
               ],
