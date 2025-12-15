@@ -82,13 +82,11 @@ export default function FacebookPostsGallery() {
     )
   }
 
-  const displayPosts = useFallback ? fallbackImages : posts.slice(0, 5)
-
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {useFallback
         ? // Fallback: Show static installation images
-          displayPosts.map((item, index) => (
+          fallbackImages.map((item, index) => (
             <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg aspect-square">
               <Image
                 src={item.src}
@@ -104,7 +102,7 @@ export default function FacebookPostsGallery() {
             </div>
           ))
         : // Live: Show Facebook posts
-          displayPosts.map((post, index) => (
+          posts.slice(0, 5).map((post) => (
             <a
               key={post.id}
               href={post.permalink_url}
