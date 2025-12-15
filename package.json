@@ -1,7 +1,7 @@
 {
   "name": "cable-com-dallas",
   "version": "1.0.0",
-  "description": "Cable-Com Services Dallas - Pentagon-Grade Network Cabling",
+  "description": "Cable-Com Services Dallas - Low Voltage Network Cabling",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -20,7 +20,7 @@
     "embla-carousel-react": "^8.0.0",
     "framer-motion": "^11.0.0",
     "leaflet": "^1.9.4",
-    "next": "^15.0.0",
+    "next": "15.5.9",
     "nodemailer": "^7.0.10",
     "pg": "^8.16.3",
     "react": "^18.3.0",
@@ -39,7 +39,7 @@
     "@types/react-dom": "^18.2.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^8.56.0",
-    "eslint-config-next": "^15.0.0",
+    "eslint-config-next": "15.5.9",
     "postcss": "^8.4.0",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.3.0"
