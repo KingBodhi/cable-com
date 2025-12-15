@@ -5,10 +5,10 @@ import { services } from '@/data/services'
 export const metadata: Metadata = {
   title: 'Network Cabling Services Dallas | Cable-Com Services',
   description:
-    'Complete network infrastructure services in Dallas-Fort Worth. Structured cabling, fiber optic, data center, security systems. BICSI certified, trusted by Pentagon & Fortune 500.',
+    'Complete low voltage network infrastructure services in Dallas-Fort Worth. Structured cabling, fiber optic, data center, security systems. BICSI certified, trusted by Pentagon & Fortune 500.',
   openGraph: {
     title: 'Network Cabling Services Dallas | Cable-Com Services',
-    description: 'Pentagon-grade network infrastructure services for Dallas-Fort Worth businesses.',
+    description: 'Low voltage network infrastructure services for Dallas-Fort Worth businesses.',
     type: 'website',
   },
 }
@@ -55,12 +55,12 @@ export default function ServicesPage() {
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              Pentagon-Grade Network Solutions
+              Low Voltage Network Solutions
             </div>
             <h1 className="mb-6">Network Cabling Services Dallas</h1>
             <p className="text-xl text-gray-200 mb-8">
               Enterprise-grade network infrastructure services for Dallas-Fort Worth businesses. From structured cabling
-              to data centers, we deliver Pentagon-level reliability and performance.
+              to data centers, we deliver mission-critical reliability and performance.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/contact" className="btn btn-primary btn-lg">

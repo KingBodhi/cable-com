@@ -4,7 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'FAQ - Network Cabling Questions Answered | Cable-Com Services Dallas',
   description:
-    'Get answers to common network cabling questions. Installation costs, timelines, certifications, warranties, and more. Expert advice from Pentagon-grade installers.',
+    'Get answers to common low voltage network cabling questions. Installation costs, timelines, certifications, warranties, and more. Expert advice from BICSI-certified installers.',
 }
 
 export default function FAQPage() {

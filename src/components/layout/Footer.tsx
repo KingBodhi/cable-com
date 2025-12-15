@@ -26,7 +26,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-300 mb-4 text-sm">
-              Pentagon-grade network cabling for Dallas-Fort Worth businesses. BICSI certified, trusted by federal
+              Low voltage network cabling for Dallas-Fort Worth businesses. BICSI certified, trusted by federal
               government and Fortune 500 companies.
             </p>
             <div className="flex gap-3">

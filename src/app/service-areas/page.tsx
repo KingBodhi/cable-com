@@ -39,8 +39,8 @@ export default function ServiceAreasPage() {
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="mb-6">Serving the Dallas-Fort Worth Metroplex</h1>
             <p className="text-xl text-gray-200">
-              Pentagon-grade network cabling services throughout the DFW area. We serve 20+ cities with the same level
-              of expertise and reliability, whether you're in downtown Dallas or the surrounding communities.
+              Low voltage network cabling services throughout the DFW area. We serve 20+ cities with the same level of
+              expertise and reliability, whether you're in downtown Dallas or the surrounding communities.
             </p>
           </div>
         </div>
@@ -207,7 +207,7 @@ export default function ServiceAreasPage() {
         <div className="container-custom text-center">
           <h2 className="mb-6">Ready to Get Started?</h2>
           <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-            Whether you're in downtown Dallas or anywhere in the metroplex, we're ready to serve you with Pentagon-grade
+            Whether you're in downtown Dallas or anywhere in the metroplex, we're ready to serve you with low voltage
             network infrastructure.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

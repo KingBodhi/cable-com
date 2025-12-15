@@ -94,8 +94,8 @@ export default function ContactPage() {
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="mb-6">Get Your Free Quote Today</h1>
             <p className="text-xl text-gray-200 mb-8">
-              Pentagon-grade network cabling for your Dallas-Fort Worth business. Get expert consultation and a
-              detailed quote within 24 hours.
+              Low voltage network cabling for your Dallas-Fort Worth business. Get expert consultation and a detailed
+              quote within 24 hours.
             </p>
           </div>
         </div>
@@ -354,7 +354,7 @@ export default function ContactPage() {
                     { icon: '✓', text: 'Lifetime Warranty on Labor' },
                     { icon: '⚡', text: '24/7 Emergency Service' },
                     { icon: '📋', text: 'Complete Documentation' },
-                    { icon: '🎯', text: 'Pentagon-Grade Reliability' },
+                    { icon: '🎯', text: 'Low Voltage Reliability' },
                     { icon: '💯', text: '100% Satisfaction Guarantee' },
                   ].map((item, index) => (
                     <li key={index} className="flex items-start gap-3">

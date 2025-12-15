@@ -526,7 +526,7 @@ export default function HomePage() {
         <div className="relative z-10 container-custom py-20 text-center">
           <div className="max-w-4xl mx-auto animate-fade-in">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-balance">
-              Pentagon-Grade Network Cabling<br />
+              Low Voltage Network Cabling<br />
               <span className="text-primary-300">for Dallas-Fort Worth Businesses</span>
             </h1>
 

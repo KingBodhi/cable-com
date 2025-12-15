@@ -1,6 +1,6 @@
 # Cable-Com Services Dallas - Production Website
 
-> Pentagon-Grade Network Cabling for Dallas-Fort Worth Businesses
+> Low Voltage Network Cabling for Dallas-Fort Worth Businesses
 
 ## 🏎️ F1-Level Web Presence - Production Build
 

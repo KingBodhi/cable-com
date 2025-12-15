@@ -7,10 +7,10 @@ import FacebookPostsGallery from '@/components/FacebookPostsGallery'
 export const metadata: Metadata = {
   title: 'Portfolio - Elite Network Infrastructure Projects | Cable-Com Services Dallas',
   description:
-    'Explore our portfolio of Pentagon-grade network cabling projects. Pentagon, Staples Center, FAA, Camp Pendleton, Golden West. 1,000+ successful installations in Dallas-Fort Worth.',
+    'Explore our portfolio of low voltage network cabling projects. Pentagon, Staples Center, FAA, Camp Pendleton, Golden West. 1,000+ successful installations in Dallas-Fort Worth.',
   openGraph: {
     title: 'Portfolio - Elite Network Infrastructure Projects | Cable-Com Services Dallas',
-    description: 'Pentagon-grade network cabling projects trusted by government and Fortune 500 companies.',
+    description: 'Low voltage network cabling projects trusted by government and Fortune 500 companies.',
     type: 'website',
   },
 }
@@ -51,7 +51,7 @@ export default function PortfolioPage() {
             <div className="inline-block bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-semibold mb-6">
               Elite Project Portfolio
             </div>
-            <h1 className="mb-6">Pentagon-Grade Network Infrastructure</h1>
+            <h1 className="mb-6">Low Voltage Network Infrastructure</h1>
             <p className="text-xl text-gray-200 mb-8">
               Explore our portfolio of mission-critical network cabling projects. From the Pentagon to Staples Center,
               we've delivered flawless execution on some of the nation's most demanding installations.
@@ -397,7 +397,7 @@ export default function PortfolioPage() {
         <div className="container-custom text-center">
           <h2 className="mb-6">Ready to Start Your Project?</h2>
           <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can bring Pentagon-grade reliability to your network infrastructure. Get a free
+            Let's discuss how we can bring low-voltage reliability to your network infrastructure. Get a free
             consultation and quote today.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

@@ -2,12 +2,12 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'About Us - Pentagon-Grade Network Cabling Experts | Cable-Com Services Dallas',
+  title: 'About Us - Low Voltage Network Cabling Experts | Cable-Com Services Dallas',
   description:
     'Meet the team behind Pentagon, Staples Center, and FAA network installations. 20+ years of BICSI-certified expertise serving Dallas-Fort Worth. Learn our story.',
   openGraph: {
     title: 'About Cable-Com Services Dallas - Network Cabling Experts',
-    description: '20+ years delivering Pentagon-grade network infrastructure across Dallas-Fort Worth.',
+    description: '20+ years delivering low voltage network infrastructure across Dallas-Fort Worth.',
     type: 'website',
   },
 }
@@ -22,7 +22,7 @@ export default function AboutPage() {
             <div className="inline-block bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-semibold mb-6">
               Since 2004
             </div>
-            <h1 className="mb-6">Pentagon-Grade Excellence in Every Installation</h1>
+            <h1 className="mb-6">Low Voltage Network Cabling Excellence in Every Installation</h1>
             <p className="text-xl text-gray-200">
               For over 20 years, Cable-Com Services Dallas has been the trusted partner for mission-critical network
               infrastructure. From the Pentagon to Staples Center, we deliver flawless execution where failure is not

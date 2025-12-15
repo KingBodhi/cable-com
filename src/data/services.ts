@@ -505,7 +505,7 @@ export const services: Service[] = [
     id: 'starlink-installation',
     name: 'Starlink Business Installation',
     slug: 'starlink-installation',
-    tagline: 'Enterprise satellite internet with Pentagon-grade network integration',
+    tagline: 'Enterprise satellite internet with low voltage network integration',
     description: 'Professional Starlink Business installation and network integration for enterprises, remote sites, and mission-critical backup connectivity. From rooftop to router, we deliver complete satellite internet solutions with automatic failover, priority support, and seamless integration into your existing network infrastructure.',
     icon: '🛰️',
     features: [
