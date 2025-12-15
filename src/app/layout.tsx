@@ -21,7 +21,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL('https://cable-comservices.com'),
   title: {
-    default: 'Cable-Com Services Dallas | Pentagon-Grade Network Cabling',
+    default: 'Cable-Com Services Dallas | Low Voltage Network Cabling',
     template: '%s | Cable-Com Services Dallas',
   },
   description: 'BICSI-certified network cabling for Dallas-Fort Worth businesses. Trusted by Pentagon, Staples Center, FAA. 1,000+ projects, 24/7 support. Enterprise structured cabling, fiber optic, data center.',
@@ -47,23 +47,23 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://cable-comservices.com',
-    title: 'Cable-Com Services Dallas | Pentagon-Grade Network Cabling',
+    title: 'Cable-Com Services Dallas | Low Voltage Network Cabling',
     description: 'BICSI-certified network cabling for Dallas-Fort Worth. Pentagon, Staples Center, FAA trusted us. 1,000+ projects completed.',
     siteName: 'Cable-Com Services Dallas',
     images: [
       {
-        url: '/images/og/cable-com-og.png',
-        width: 1920,
-        height: 1080,
-        alt: 'Cable-Com Services Dallas skyline with neon green logo',
+        url: '/images/og/low-voltage-og.jpg',
+        width: 1024,
+        height: 1024,
+        alt: 'Cable-Com Services neon swoosh logo over the Dallas skyline',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cable-Com Services Dallas | Pentagon-Grade Network Cabling',
+    title: 'Cable-Com Services Dallas | Low Voltage Network Cabling',
     description: 'BICSI-certified network cabling for Dallas-Fort Worth businesses.',
-    images: ['/images/og/cable-com-og.png'],
+    images: ['/images/og/low-voltage-og.jpg'],
   },
   robots: {
     index: true,
@@ -129,7 +129,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'LocalBusiness',
               name: 'Cable-Com Services Dallas',
-              image: 'https://cable-comservices.com/images/og/cable-com-og.png',
+              image: 'https://cable-comservices.com/images/og/low-voltage-og.jpg',
               '@id': 'https://cable-comservices.com',
               url: 'https://cable-comservices.com',
               telephone: '+14696531275',

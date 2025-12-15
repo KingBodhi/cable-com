@@ -39,6 +39,9 @@ export default function PortfolioPage() {
     'Financial Services',
   ]
 
+  // Temporarily hide social gallery until new content pipeline is ready
+  const showInstallationGallery = false
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -222,22 +225,24 @@ export default function PortfolioPage() {
       </section>
 
       {/* Installation Gallery - Real Project Photos */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="max-w-3xl mb-12 text-center mx-auto">
-            <div className="inline-block bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              Live from the Field
+      {showInstallationGallery && (
+        <section className="section-padding bg-white">
+          <div className="container-custom">
+            <div className="max-w-3xl mb-12 text-center mx-auto">
+              <div className="inline-block bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                Live from the Field
+              </div>
+              <h2 className="mb-4">Our Work in Action</h2>
+              <p className="text-xl text-gray-600">
+                Real photos from our network infrastructure installations. From fiber optic terminations to industrial data
+                center environments, see the precision and quality we deliver.
+              </p>
             </div>
-            <h2 className="mb-4">Our Work in Action</h2>
-            <p className="text-xl text-gray-600">
-              Real photos from our network infrastructure installations. From fiber optic terminations to industrial data
-              center environments, see the precision and quality we deliver.
-            </p>
-          </div>
 
-          <FacebookPostsGallery />
-        </div>
-      </section>
+            <FacebookPostsGallery />
+          </div>
+        </section>
+      )}
 
       {/* All Projects Grid */}
       <section className="section-padding">
