@@ -132,7 +132,7 @@ export default function RootLayout({
               image: 'https://cable-comservices.com/images/og/low-voltage-og.jpg',
               '@id': 'https://cable-comservices.com',
               url: 'https://cable-comservices.com',
-              telephone: '+14696531275',
+              telephone: '+14696689679',
               priceRange: '$$-$$$',
               address: {
                 '@type': 'PostalAddress',

@@ -117,7 +117,7 @@ export default function PrivacyPolicyPage() {
                 <li><strong>Object:</strong> Object to certain processing activities</li>
               </ul>
               <p>
-                To exercise these rights, please contact us at <a href="mailto:contact@cable-comservices.com">contact@cable-comservices.com</a> or call <a href="tel:+14696531275">(469) 653-1275</a>.
+                To exercise these rights, please contact us at <a href="mailto:contact@cable-comservices.com">contact@cable-comservices.com</a> or call <a href="tel:+14696689679">(469) 668-9679</a>.
               </p>
 
               <h2>7. California Privacy Rights (CCPA)</h2>
@@ -157,7 +157,7 @@ export default function PrivacyPolicyPage() {
               <div className="bg-gray-50 p-6 rounded-lg mt-4">
                 <p className="mb-2"><strong>Cable-Com Services Dallas</strong></p>
                 <p className="mb-2">2101 Joel East Road<br />Fort Worth, TX 76140</p>
-                <p className="mb-2">Phone: <a href="tel:+14696531275">(469) 653-1275</a></p>
+                <p className="mb-2">Phone: <a href="tel:+14696689679">(469) 668-9679</a></p>
                 <p>Email: <a href="mailto:contact@cable-comservices.com">contact@cable-comservices.com</a></p>
               </div>
 

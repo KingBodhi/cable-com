@@ -60,8 +60,8 @@ export default function PortfolioPage() {
               <Link href="/contact" className="btn btn-primary btn-lg">
                 Start Your Project
               </Link>
-              <a href="tel:+14696531275" className="btn btn-secondary btn-lg">
-                📞 (469) 653-1275
+              <a href="tel:+14696689679" className="btn btn-secondary btn-lg">
+                📞 (469) 668-9679
               </a>
             </div>
           </div>
@@ -405,10 +405,10 @@ export default function PortfolioPage() {
               Get Free Quote
             </Link>
             <a
-              href="tel:+14696531275"
+              href="tel:+14696689679"
               className="btn btn-ghost btn-lg border-2 border-white text-white hover:bg-white hover:text-primary-600"
             >
-              📞 (469) 653-1275
+              📞 (469) 668-9679
             </a>
           </div>
         </div>

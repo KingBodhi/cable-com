@@ -61,8 +61,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <Link href="/contact" className="btn btn-primary btn-lg">
                 Get Free Quote
               </Link>
-              <a href="tel:+14696531275" className="btn btn-secondary btn-lg">
-                📞 (469) 653-1275
+              <a href="tel:+14696689679" className="btn btn-secondary btn-lg">
+                📞 (469) 668-9679
               </a>
             </div>
           </div>
@@ -247,8 +247,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <Link href="/contact" className="btn btn-secondary btn-lg">
               Get Free Quote
             </Link>
-            <a href="tel:+14696531275" className="btn btn-ghost btn-lg border-2 border-white text-white hover:bg-white hover:text-primary-600">
-              📞 (469) 653-1275
+            <a href="tel:+14696689679" className="btn btn-ghost btn-lg border-2 border-white text-white hover:bg-white hover:text-primary-600">
+              📞 (469) 668-9679
             </a>
           </div>
         </div>

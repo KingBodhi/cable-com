@@ -241,7 +241,7 @@ fetch('/api/leads', {
   body: JSON.stringify({
     name: 'John Smith',
     email: 'john@company.com',
-    phone: '(469) 653-1275',
+    phone: '(469) 668-9679',
     company: 'Acme Corp',
     service: 'structured-cabling',
     projectType: 'new-installation',

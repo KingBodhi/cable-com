@@ -105,12 +105,12 @@ export default function ContactPage() {
       <section className="py-12 bg-white border-b border-gray-200">
         <div className="container-custom">
           <div className="grid md:grid-cols-3 gap-8">
-            <a href="tel:+14696531275" className="card card-hover text-center group">
+            <a href="tel:+14696689679" className="card card-hover text-center group">
               <div className="w-16 h-16 bg-gradient-cta rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
                 📞
               </div>
               <h3 className="text-xl font-bold mb-2 text-gray-900">Call Us</h3>
-              <p className="text-primary-600 font-semibold text-lg">(469) 653-1275</p>
+              <p className="text-primary-600 font-semibold text-lg">(469) 668-9679</p>
               <p className="text-sm text-gray-600 mt-2">Mon-Fri: 7AM-6PM<br />24/7 Emergency Service</p>
             </a>
             <a href="mailto:contact@cable-comservices.com" className="card card-hover text-center group">
@@ -206,7 +206,7 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="input-field"
-                      placeholder="(469) 653-1275"
+                      placeholder="(469) 668-9679"
                     />
                   </div>
                   <div>
@@ -417,8 +417,8 @@ export default function ContactPage() {
               <div className="card bg-texas-red text-white">
                 <h3 className="text-2xl font-bold mb-2">Need Emergency Service?</h3>
                 <p className="mb-4">Network down? We're available 24/7 for critical infrastructure emergencies.</p>
-                <a href="tel:+14696531275" className="btn btn-secondary btn-lg w-full">
-                  📞 Call Now: (469) 653-1275
+                <a href="tel:+14696689679" className="btn btn-secondary btn-lg w-full">
+                  📞 Call Now: (469) 668-9679
                 </a>
               </div>
             </div>

@@ -149,7 +149,7 @@ export default function AccessibilityPage() {
               </p>
               <ul>
                 <li>Email: <a href="mailto:contact@cable-comservices.com">contact@cable-comservices.com</a></li>
-                <li>Phone: <a href="tel:+14696531275">(469) 653-1275</a></li>
+                <li>Phone: <a href="tel:+14696689679">(469) 668-9679</a></li>
                 <li>Address: 2101 Joel East Road, Fort Worth, TX 76140</li>
               </ul>
               <p>
@@ -196,7 +196,7 @@ export default function AccessibilityPage() {
               <div className="bg-gray-50 p-6 rounded-lg mt-8">
                 <p className="mb-2"><strong>Cable-Com Services Dallas</strong></p>
                 <p className="mb-2">2101 Joel East Road<br />Fort Worth, TX 76140</p>
-                <p className="mb-2">Phone: <a href="tel:+14696531275">(469) 653-1275</a></p>
+                <p className="mb-2">Phone: <a href="tel:+14696689679">(469) 668-9679</a></p>
                 <p>Email: <a href="mailto:contact@cable-comservices.com">contact@cable-comservices.com</a></p>
               </div>
 
