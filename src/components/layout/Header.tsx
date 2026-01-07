@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
@@ -11,6 +11,7 @@ export default function Header() {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
   const pathname = usePathname()
+  const servicesHoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +26,31 @@ export default function Header() {
       setIsMobileServicesOpen(false)
     }
   }, [isMobileMenuOpen])
+
+  const clearServicesHoverTimeout = () => {
+    if (servicesHoverTimeout.current) {
+      clearTimeout(servicesHoverTimeout.current)
+      servicesHoverTimeout.current = null
+    }
+  }
+
+  const handleDesktopServicesEnter = () => {
+    clearServicesHoverTimeout()
+    setIsServicesOpen(true)
+  }
+
+  const handleDesktopServicesLeave = () => {
+    clearServicesHoverTimeout()
+    servicesHoverTimeout.current = setTimeout(() => {
+      setIsServicesOpen(false)
+    }, 150)
+  }
+
+  useEffect(() => {
+    return () => {
+      clearServicesHoverTimeout()
+    }
+  }, [])
 
   const handleMobileNavSelection = () => {
     setIsMobileMenuOpen(false)
@@ -79,8 +105,8 @@ export default function Header() {
             {/* Services Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
+              onMouseEnter={handleDesktopServicesEnter}
+              onMouseLeave={handleDesktopServicesLeave}
             >
               <button
                 className={`font-medium transition-colors hover:text-primary-600 flex items-center gap-1 ${
@@ -100,34 +126,40 @@ export default function Header() {
 
               {/* Mega Menu */}
               {isServicesOpen && (
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-2xl p-6 animate-fade-in">
-                  <div className="grid grid-cols-2 gap-4">
-                    {services.map((service) => (
-                      <Link
-                        key={service.slug}
-                        href={`/services/${service.slug}`}
-                        className="flex items-start gap-3 p-3 rounded-lg hover:bg-primary-50 transition-colors group"
-                      >
-                        <div className="text-2xl">{service.icon}</div>
-                        <div>
-                          <div className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
-                            {service.name}
+                <div
+                  className="absolute top-full left-1/2 transform -translate-x-1/2 pt-2"
+                  onMouseEnter={handleDesktopServicesEnter}
+                  onMouseLeave={handleDesktopServicesLeave}
+                >
+                  <div className="w-[600px] bg-white rounded-xl shadow-2xl p-6 animate-fade-in">
+                    <div className="grid grid-cols-2 gap-4">
+                      {services.map((service) => (
+                        <Link
+                          key={service.slug}
+                          href={`/services/${service.slug}`}
+                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-primary-50 transition-colors group"
+                        >
+                          <div className="text-2xl">{service.icon}</div>
+                          <div>
+                            <div className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
+                              {service.name}
+                            </div>
+                            <div className="text-sm text-gray-600">Learn more →</div>
                           </div>
-                          <div className="text-sm text-gray-600">Learn more →</div>
-                        </div>
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-gray-200">
+                      <Link
+                        href="/services"
+                        className="text-primary-600 font-semibold hover:text-primary-700 flex items-center gap-2"
+                      >
+                        View All Services
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
                       </Link>
-                    ))}
-                  </div>
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <Link
-                      href="/services"
-                      className="text-primary-600 font-semibold hover:text-primary-700 flex items-center gap-2"
-                    >
-                      View All Services
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
+                    </div>
                   </div>
                 </div>
               )}
