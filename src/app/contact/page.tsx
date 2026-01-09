@@ -121,14 +121,16 @@ export default function ContactPage() {
               <p className="text-primary-600 font-semibold">contact@cable-comservices.com</p>
               <p className="text-sm text-gray-600 mt-2">Response within 4 hours</p>
             </a>
+{/* Address hidden until updated - uncomment when ready:
             <div className="card text-center">
               <div className="w-16 h-16 bg-gradient-cta rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
                 📍
               </div>
               <h3 className="text-xl font-bold mb-2 text-gray-900">Visit Us</h3>
-              <p className="text-gray-700">2101 Joel East Road<br />Fort Worth, TX 76140</p>
+              <p className="text-gray-700">ADDRESS_LINE_1<br />ADDRESS_LINE_2</p>
               <p className="text-sm text-gray-600 mt-2">By appointment only</p>
             </div>
+*/}
           </div>
         </div>
       </section>
@@ -426,16 +428,16 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Interactive Map */}
+{/* Map/Address section hidden until address updated - uncomment when ready:
       <section className="bg-gray-100 py-12">
         <div className="container-custom">
           <div className="text-center mb-8">
             <h2 className="mb-4">Find Us</h2>
             <p className="text-xl text-gray-600">
-              2101 Joel East Road, Fort Worth, TX 76140
+              ADDRESS_LINE_1, ADDRESS_LINE_2
             </p>
             <a
-              href="https://www.google.com/maps/dir/?api=1&destination=32.646569,-97.293374"
+              href="https://www.google.com/maps/dir/?api=1&destination=LATITUDE,LONGITUDE"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary-600 hover:underline inline-flex items-center gap-2 mt-2"
@@ -445,16 +447,17 @@ export default function ContactPage() {
           </div>
           <div className="max-w-5xl mx-auto shadow-xl rounded-lg overflow-hidden">
             <Map
-              latitude={32.646569}
-              longitude={-97.293374}
+              latitude={LATITUDE}
+              longitude={LONGITUDE}
               zoom={15}
               height="500px"
               markerTitle="Cable-Com Services"
-              markerDescription="2101 Joel East Road, Fort Worth, TX 76140"
+              markerDescription="ADDRESS_LINE_1, ADDRESS_LINE_2"
             />
           </div>
         </div>
       </section>
+*/}
 
       {/* FAQ Preview */}
       <section className="section-padding">

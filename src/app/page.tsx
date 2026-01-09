@@ -829,16 +829,18 @@ export default function HomePage() {
                 </Link>
               </div>
 
+{/* Map hidden until address updated - uncomment when ready:
               <div className="rounded-xl overflow-hidden shadow-lg aspect-square">
                 <Map
-                  latitude={32.646569}
-                  longitude={-97.293374}
+                  latitude={LATITUDE}
+                  longitude={LONGITUDE}
                   zoom={10}
                   height="100%"
                   markerTitle="Cable-Com Services"
-                  markerDescription="2101 Joel East Road, Fort Worth, TX 76140"
+                  markerDescription="ADDRESS_LINE_1, ADDRESS_LINE_2"
                 />
               </div>
+*/}
             </div>
 
             {/* Professional Quote */}

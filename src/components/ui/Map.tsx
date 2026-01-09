@@ -22,12 +22,12 @@ interface MapProps {
 }
 
 export default function Map({
-  latitude = 32.646569,
-  longitude = -97.293374,
+  latitude = 32.7767, // Default to Dallas city center until address is set
+  longitude = -96.7970,
   zoom = 15,
   height = '400px',
   markerTitle = 'Cable-Com Services Dallas',
-  markerDescription = '2101 Joel East Road, Fort Worth, TX 76140',
+  markerDescription = 'Dallas-Fort Worth Area', // Update when address is ready
 }: MapProps) {
   const mapRef = useRef<HTMLDivElement>(null)
   const mapInstanceRef = useRef<L.Map | null>(null)

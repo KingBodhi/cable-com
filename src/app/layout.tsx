@@ -134,19 +134,21 @@ export default function RootLayout({
               url: 'https://cable-comservices.com',
               telephone: '+14696689679',
               priceRange: '$$-$$$',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: '2101 Joel East Road',
-                addressLocality: 'Fort Worth',
-                addressRegion: 'TX',
-                postalCode: '76140',
-                addressCountry: 'US',
-              },
-              geo: {
-                '@type': 'GeoCoordinates',
-                latitude: 32.646569,
-                longitude: -97.293374,
-              },
+              // Address hidden until updated - uncomment and update when ready:
+              // address: {
+              //   '@type': 'PostalAddress',
+              //   streetAddress: 'ADDRESS_LINE_1',
+              //   addressLocality: 'CITY',
+              //   addressRegion: 'STATE',
+              //   postalCode: 'ZIP',
+              //   addressCountry: 'US',
+              // },
+              // Geo coordinates hidden until address updated - uncomment when ready:
+              // geo: {
+              //   '@type': 'GeoCoordinates',
+              //   latitude: LATITUDE,
+              //   longitude: LONGITUDE,
+              // },
               openingHoursSpecification: [
                 {
                   '@type': 'OpeningHoursSpecification',

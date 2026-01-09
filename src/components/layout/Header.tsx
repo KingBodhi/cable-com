@@ -127,7 +127,7 @@ export default function Header() {
               {/* Mega Menu */}
               {isServicesOpen && (
                 <div
-                  className="absolute top-full left-1/2 transform -translate-x-1/2 pt-2"
+                  className="absolute top-full left-1/2 transform -translate-x-1/2 pt-2 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-2"
                   onMouseEnter={handleDesktopServicesEnter}
                   onMouseLeave={handleDesktopServicesLeave}
                 >

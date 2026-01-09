@@ -155,6 +155,7 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-4">Contact Us</h3>
             <ul className="space-y-3 text-sm text-gray-300">
+{/* Address hidden until updated - uncomment when ready:
               <li className="flex items-start gap-2">
                 <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -171,11 +172,12 @@ export default function Footer() {
                   />
                 </svg>
                 <span>
-                  2101 Joel East Road
+                  ADDRESS_LINE_1
                   <br />
-                  Fort Worth, TX 76140
+                  ADDRESS_LINE_2
                 </span>
               </li>
+*/}
               <li>
                 <a href="tel:+14696689679" className="flex items-center gap-2 hover:text-white transition-colors">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

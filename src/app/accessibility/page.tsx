@@ -119,7 +119,7 @@ export default function AccessibilityPage() {
 
               <h2>Physical Location Accessibility</h2>
               <p>
-                Our office at 2101 Joel East Road, Fort Worth, TX 76140 is committed to physical accessibility:
+                Our office is committed to physical accessibility:
               </p>
               <ul>
                 <li>Accessible parking available</li>
@@ -150,7 +150,7 @@ export default function AccessibilityPage() {
               <ul>
                 <li>Email: <a href="mailto:contact@cable-comservices.com">contact@cable-comservices.com</a></li>
                 <li>Phone: <a href="tel:+14696689679">(469) 668-9679</a></li>
-                <li>Address: 2101 Joel East Road, Fort Worth, TX 76140</li>
+                {/* Address hidden until updated: <li>Address: ADDRESS_LINE_1, ADDRESS_LINE_2</li> */}
               </ul>
               <p>
                 We typically respond to feedback within 2-3 business days and will work with you to provide the information or service you need through an alternative communication method.
@@ -195,7 +195,7 @@ export default function AccessibilityPage() {
 
               <div className="bg-gray-50 p-6 rounded-lg mt-8">
                 <p className="mb-2"><strong>Cable-Com Services Dallas</strong></p>
-                <p className="mb-2">2101 Joel East Road<br />Fort Worth, TX 76140</p>
+                {/* Address hidden until updated: <p className="mb-2">ADDRESS_LINE_1<br />ADDRESS_LINE_2</p> */}
                 <p className="mb-2">Phone: <a href="tel:+14696689679">(469) 668-9679</a></p>
                 <p>Email: <a href="mailto:contact@cable-comservices.com">contact@cable-comservices.com</a></p>
               </div>
